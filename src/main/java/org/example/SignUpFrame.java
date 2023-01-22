@@ -102,7 +102,7 @@ public class SignUpFrame extends JFrame implements ActionListener {
 
             userNameText = userTextField.getText();
             emailText = emailField.getText();
-            if(userTextField == null || emailField == null || createPasswordField == null || confirmPasswordField == null ){
+            if(userNameText == null || emailField == null || createPasswordField == null || confirmPasswordField == null ){
                 JOptionPane.showMessageDialog(this,"Complete the information");
 
             }
