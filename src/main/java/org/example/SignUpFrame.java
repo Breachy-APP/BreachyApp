@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 public class SignUpFrame extends JFrame implements ActionListener {
 
     Container singUpContainer = getContentPane();
@@ -27,27 +28,30 @@ public class SignUpFrame extends JFrame implements ActionListener {
         addActionEvent();
 
     }
+
     public void setLayoutManager() {
         singUpContainer.setLayout(null);
     }
-    public void setLocation(){
+
+    public void setLocation() {
         // Label's Locations
         userLabel.setBounds(50, 50, 100, 30);
-        eMailLabel.setBounds(50,100, 100,30);
+        eMailLabel.setBounds(50, 100, 100, 30);
         createPasswordLabel.setBounds(50, 150, 100, 30);
-        confirmPasswordLabel.setBounds(50,200,100,30);
+        confirmPasswordLabel.setBounds(50, 200, 100, 30);
         // Field's Locations
         userTextField.setBounds(160, 50, 150, 30);
-        emailField.setBounds(160,100,150,30);
-        createPasswordField.setBounds(160,150,150,30);
+        emailField.setBounds(160, 100, 150, 30);
+        createPasswordField.setBounds(160, 150, 150, 30);
         confirmPasswordField.setBounds(160, 200, 150, 30);
         // Button's location
         showPassword.setBounds(160, 250, 150, 30);
-        agreement.setBounds(160,300,150,30);
+        agreement.setBounds(160, 300, 150, 30);
         loginButton.setBounds(50, 350, 100, 30);
         resetButton.setBounds(200, 350, 100, 30);
 
     }
+
     public void addComponentsToContainer() {
         //Labels
         singUpContainer.add(userLabel);
@@ -68,16 +72,18 @@ public class SignUpFrame extends JFrame implements ActionListener {
         //bg
         singUpContainer.setBackground(new Color(78, 178, 178));
     }
+
     public void addActionEvent() {
         loginButton.addActionListener(this);
         resetButton.addActionListener(this);
         showPassword.addActionListener(this);
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
         // RESET button case
-        if(e.getSource() == resetButton){
+        if (e.getSource() == resetButton) {
             userTextField.setText("");
             emailField.setText("");
             createPasswordField.setText("");
@@ -94,7 +100,7 @@ public class SignUpFrame extends JFrame implements ActionListener {
             }
         }
         // Sign Up button case
-        if(e.getSource() == loginButton){
+        if (e.getSource() == loginButton) {
             String userNameText;
             String emailText;
             String passwordText;
@@ -102,16 +108,21 @@ public class SignUpFrame extends JFrame implements ActionListener {
 
             userNameText = userTextField.getText();
             emailText = emailField.getText();
+<<<<<<< HEAD
             if(userNameText == null || emailField == null || createPasswordField == null || confirmPasswordField == null ){
                 JOptionPane.showMessageDialog(this,"Complete the information");
+=======
+            if (userTextField == null || emailField == null || createPasswordField == null || confirmPasswordField == null) {
+                JOptionPane.showMessageDialog(this, "Complete the information");
+>>>>>>> fd8be809b7f1eb05cee8234d69e4990e2fc77d13
 
             }
-            if(! agreement.isSelected()){
-                JOptionPane.showMessageDialog(this,"to be able to use our application you should agree to our terms");
+            if (!agreement.isSelected()) {
+                JOptionPane.showMessageDialog(this, "to be able to use our application you should agree to our terms");
             }
-            if(! emailText.endsWith(".com") || emailText.endsWith(".sa")){
+            if (!emailText.endsWith(".com") || emailText.endsWith(".sa")) {
                 emailField.setText("");
-                JOptionPane.showMessageDialog(this,"Invalid Email");
+                JOptionPane.showMessageDialog(this, "Invalid Email");
             }
 
 
@@ -119,13 +130,15 @@ public class SignUpFrame extends JFrame implements ActionListener {
             conPasswordText = confirmPasswordField.getText();
 
 
-            if(passwordText.equals(conPasswordText)){
-                JOptionPane.showMessageDialog(this,"Welcome to our amazing app");
-            }
-            else{
+            if (passwordText.equals("")) {
+                JOptionPane.showMessageDialog(this, "Password is empty!");
+            } else if (passwordText.equals(conPasswordText)) {
+                JOptionPane.showMessageDialog(this, "Welcome to our amazing app");
+            } else {
                 createPasswordField.setText("");
                 confirmPasswordField.setText("");
-                JOptionPane.showMessageDialog(this,"Passwords Doesn't Match, please try again with matching passwords");
+                JOptionPane.showMessageDialog(this, "Passwords Doesn't Match, please try again with matching passwords");
+
             }
         }
     }
