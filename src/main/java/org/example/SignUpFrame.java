@@ -108,13 +108,13 @@ public class SignUpFrame extends JFrame implements ActionListener {
 
             userNameText = userTextField.getText();
             emailText = emailField.getText();
-<<<<<<< HEAD
-            if(userNameText == null || emailField == null || createPasswordField == null || confirmPasswordField == null ){
-                JOptionPane.showMessageDialog(this,"Complete the information");
-=======
+
+            if(userNameText == null || emailField == null || createPasswordField == null || confirmPasswordField == null ) {
+                JOptionPane.showMessageDialog(this, "Complete the information");
+            }
             if (userTextField == null || emailField == null || createPasswordField == null || confirmPasswordField == null) {
                 JOptionPane.showMessageDialog(this, "Complete the information");
->>>>>>> fd8be809b7f1eb05cee8234d69e4990e2fc77d13
+
 
             }
             if (!agreement.isSelected()) {
@@ -143,3 +143,4 @@ public class SignUpFrame extends JFrame implements ActionListener {
         }
     }
 }
+
