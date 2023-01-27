@@ -58,7 +58,7 @@ public class DBActions {
 
     }
 
-    public void retrieveAccountInfo(String usenama, String password){
+    public void retrieveAccountInfo(String username, String password){
         //todo
         try{
 
@@ -68,12 +68,12 @@ public class DBActions {
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()){
-                if(rs.getString("username").equals(usenama) && rs.getString("upassword").equals(password)){
+                if(rs.getString("username").equals(username) && rs.getString("upassword").equals(password)){
                     System.out.println("Login Successfully");
                     // todo app accessed page
                 }
                 else{
-                    System.out.println("Access Denied ");
+                    System.out.println("searching...");
                 }
             }
 
@@ -82,6 +82,29 @@ public class DBActions {
         catch (SQLException e){
             e.printStackTrace();
         }
+    }
+    public boolean alreadyExists(String username, String password){
+        boolean exists = false;
+        try {
+            Connection dbConnection = DBConnection.getInstance().getConnection();
+            Statement stmt = dbConnection.createStatement();
+            String query = "select username, upassword from accounts;";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()){
+                if(rs.getString("username").equals(this.username) && rs.getString("upassword").equals(this.password)){
+                    exists = true;
+                }
+                else{
+                    exists = false;
+                }
+            }
+
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return exists;
     }
     public void deleteAccount(){
         //todo  needs a GUI DELETE Button
@@ -96,9 +119,6 @@ public class DBActions {
     public void updateAccount(){
         //todo
     }
-
-
-
 }
 
 

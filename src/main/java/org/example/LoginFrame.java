@@ -72,8 +72,8 @@ public class LoginFrame extends JFrame implements ActionListener {
             System.out.println(userText + pwdText);
             // add DB select
             //todo
-            DBActions accessAcount = new DBActions(userText, pwdText);
-            accessAcount.retrieveAccountInfo(userText, pwdText);
+            DBActions accessAccount = new DBActions(userText, pwdText);
+            accessAccount.retrieveAccountInfo(userText, pwdText);
             System.out.println("Retrieve info");
 
 

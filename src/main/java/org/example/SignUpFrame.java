@@ -16,7 +16,7 @@ public class SignUpFrame extends JFrame implements ActionListener {
     JTextField emailField = new JTextField();
     JPasswordField createPasswordField = new JPasswordField();
     JPasswordField confirmPasswordField = new JPasswordField();
-    JButton loginButton = new JButton("Sign UP");
+    JButton signUpButton = new JButton("Sign UP");
     JButton resetButton = new JButton("RESET");
     JCheckBox showPassword = new JCheckBox("Show Password");
     JCheckBox agreement = new JCheckBox("Agree to Our Term");
@@ -47,7 +47,7 @@ public class SignUpFrame extends JFrame implements ActionListener {
         // Button's location
         showPassword.setBounds(160, 250, 150, 30);
         agreement.setBounds(160, 300, 150, 30);
-        loginButton.setBounds(50, 350, 100, 30);
+        signUpButton.setBounds(50, 350, 100, 30);
         resetButton.setBounds(200, 350, 100, 30);
 
     }
@@ -67,14 +67,14 @@ public class SignUpFrame extends JFrame implements ActionListener {
         singUpContainer.add(showPassword);
         singUpContainer.add(agreement);
         //buttons
-        singUpContainer.add(loginButton);
+        singUpContainer.add(signUpButton);
         singUpContainer.add(resetButton);
         //bg
         singUpContainer.setBackground(new Color(78, 178, 178));
     }
 
     public void addActionEvent() {
-        loginButton.addActionListener(this);
+        signUpButton.addActionListener(this);
         resetButton.addActionListener(this);
         showPassword.addActionListener(this);
     }
@@ -99,8 +99,10 @@ public class SignUpFrame extends JFrame implements ActionListener {
                 confirmPasswordField.setEchoChar('*');
             }
         }
+
+        boolean complete;
         // Sign Up button case
-        if (e.getSource() == loginButton) {
+        if (e.getSource() == signUpButton) {
             String userNameText;
             String emailText;
             String passwordText;
@@ -108,46 +110,54 @@ public class SignUpFrame extends JFrame implements ActionListener {
 
             userNameText = userTextField.getText();
             emailText = emailField.getText();
-
-            if (userTextField == null || emailField == null || createPasswordField == null || confirmPasswordField == null) {
-                JOptionPane.showMessageDialog(this, "Complete the information");
-
-            }
-            if (!agreement.isSelected()) {
-                JOptionPane.showMessageDialog(this, "to be able to use our application you should agree to our terms");
-            }
-            if (!emailText.endsWith(".com") || emailText.endsWith(".sa")) {
-                emailField.setText("");
-                JOptionPane.showMessageDialog(this, "Invalid Email");
-            }
-
-
+            // password info
             passwordText = createPasswordField.getText();
             conPasswordText = confirmPasswordField.getText();
 
-
-            if (passwordText.equals("")) {
-                JOptionPane.showMessageDialog(this, "Password is empty!");
-            } else if (passwordText.equals(conPasswordText)) {
-                JOptionPane.showMessageDialog(this, "Welcome to our amazing app");
-            } else {
-                createPasswordField.setText("");
-                confirmPasswordField.setText("");
-                JOptionPane.showMessageDialog(this, "Passwords Doesn't Match, please try again with matching passwords");
-
-            }
-            if(e.getSource() == loginButton){
-                DBActions newAccount = new DBActions(userNameText, passwordText, emailText);
-                newAccount.insertAccount();
-                System.out.println("Insert successfully");
-            }
-            // Insert to DB
+            // username and email info
 
 
+                // Check if already exists then Insert to DB
+                if (isComplete(userNameText, emailText, passwordText, conPasswordText)) {
+
+                    DBActions newAccount = new DBActions(userNameText, passwordText, emailText);
+                    if (newAccount.alreadyExists(userNameText, passwordText)) {
+                        JOptionPane.showMessageDialog(this, "Account Already Exists try to log in");
+                    } else {
+                        newAccount.insertAccount();
+                        System.out.println("Insert successfully");
+                    }
+                    JOptionPane.showMessageDialog(this, "Welcome to our amazing app");
+                    // todo open app page
+                }
+        }
+    }
+    public boolean isComplete(String userNameText, String emailText, String passwordText, String conPasswordText){
+
+
+        if(userTextField != null && emailField != null && createPasswordField != null &&
+                confirmPasswordField != null && agreement.isSelected() && (emailText.endsWith(".com")||emailText.endsWith(".sa"))
+                && emailText.contains("@") && passwordText.equals(conPasswordText)){
+
+            return true;
 
         }
+        else {
 
+            if (userTextField == null || emailField == null || createPasswordField == null || confirmPasswordField == null) {
+                JOptionPane.showMessageDialog(this, "please complete the information");
+            }else if (! emailText.contains("@")){
+                JOptionPane.showMessageDialog(this, "Invalid Email it should contain a host");
+            } else if (passwordText.equals("") || !passwordText.equals(conPasswordText)) {
+                createPasswordField.setText("");
+                confirmPasswordField.setText("");
+                JOptionPane.showMessageDialog(this, "Password is wrong!");
+            }else if ( ! agreement.isSelected()) {
+                JOptionPane.showMessageDialog(this, "please agree to out terms to be able to sign up");
+            }
+            return false;
 
+        }
     }
 }
 
