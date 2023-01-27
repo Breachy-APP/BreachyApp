@@ -8,7 +8,7 @@ public class InitialPage extends JFrame implements ActionListener {
 
     Container initPageContainer = getContentPane();
     JLabel welcomeLabel = new JLabel("Welcome to the application");
-    JButton signUPButton = new JButton("SIGN IN");
+    JButton signUPButton = new JButton("SIGN UP");
     JButton logInButton = new JButton("LOG IN");
     JCheckBox rememberMe = new JCheckBox("REMEMBER ME");
 

@@ -69,11 +69,13 @@ public class LoginFrame extends JFrame implements ActionListener {
             String pwdText;
             userText = userTextField.getText();
             pwdText = passwordField.getText();
-            if (userText.equalsIgnoreCase("mehtab") && pwdText.equals("12345")) {
-                JOptionPane.showMessageDialog(this, "Login Successful");
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid Username or Password");
-            }
+            System.out.println(userText + pwdText);
+            // add DB select
+            //todo
+            DBActions accessAcount = new DBActions(userText, pwdText);
+            accessAcount.retrieveAccountInfo(userText, pwdText);
+            System.out.println("Retrieve info");
+
 
         }
         //Coding Part of RESET button

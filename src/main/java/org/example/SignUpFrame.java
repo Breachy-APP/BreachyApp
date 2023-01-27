@@ -109,12 +109,8 @@ public class SignUpFrame extends JFrame implements ActionListener {
             userNameText = userTextField.getText();
             emailText = emailField.getText();
 
-            if(userNameText == null || emailField == null || createPasswordField == null || confirmPasswordField == null ) {
-                JOptionPane.showMessageDialog(this, "Complete the information");
-            }
             if (userTextField == null || emailField == null || createPasswordField == null || confirmPasswordField == null) {
                 JOptionPane.showMessageDialog(this, "Complete the information");
-
 
             }
             if (!agreement.isSelected()) {
@@ -140,7 +136,18 @@ public class SignUpFrame extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this, "Passwords Doesn't Match, please try again with matching passwords");
 
             }
+            if(e.getSource() == loginButton){
+                DBActions newAccount = new DBActions(userNameText, passwordText, emailText);
+                newAccount.insertAccount();
+                System.out.println("Insert successfully");
+            }
+            // Insert to DB
+
+
+
         }
+
+
     }
 }
 
