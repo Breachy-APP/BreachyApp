@@ -51,10 +51,11 @@ public class LoginFrame extends JFrame implements ActionListener {
         container.add(showPassword);
         container.add(loginButton);
         container.add(resetButton);
-        container.setBackground(new Color(120, 100,122));
+        container.setBackground(new Color(44, 60,120));
     }
 
     public void addActionEvent() {
+
         loginButton.addActionListener(this);
         resetButton.addActionListener(this);
         showPassword.addActionListener(this);
@@ -73,9 +74,18 @@ public class LoginFrame extends JFrame implements ActionListener {
             // add DB select
             //todo
             DBActions accessAccount = new DBActions(userText, pwdText);
-            accessAccount.retrieveAccountInfo(userText, pwdText);
-            System.out.println("Retrieve info");
+            if(accessAccount.retrieveAccountInfo(userText, pwdText)){
 
+                mainPageFrame mainFrame = new mainPageFrame();
+                mainFrame.openMainPage(mainFrame, true);
+                InitialPage x = new InitialPage();
+                x.openIntialPage(x,false);
+                System.out.println("Retrieve info");
+            }
+            else {
+                JOptionPane.showMessageDialog(this,"Username/password is incorrect, please try again");
+                System.out.println("Wrong account username/password");
+            }
 
         }
         //Coding Part of RESET button
