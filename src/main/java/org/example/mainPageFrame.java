@@ -26,6 +26,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
     String accountUsername;
     String accountPassword;
+
     mainPageFrame(){
         setLayoutManager();
         setLocationAndSize();
@@ -33,12 +34,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
         addActionEvent();
     }
 
-    public void userAccount(String username, String password){
 
-        accountUsername = username;
-        accountPassword = password;
-
-    }
     public void setLocationAndSize(){
 
         searchLabel.setBounds(13, 15, 100, 30);
@@ -77,6 +73,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
         mainFrame.setTitle("main page");
         mainFrame.setVisible(c);
+        mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         mainFrame.setBounds(600, 150, 350, 500);
         mainFrame.setResizable(false);
 
@@ -127,6 +124,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
         }
         if(e.getSource() == logOutButton){
 
+            JOptionPane.showMessageDialog(this,"Thank You For using Out Application");
             this.toBack();
             setVisible(false);
             InitialPage initFrame = new InitialPage();
@@ -144,7 +142,9 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
             this.toFront();
             setVisible(false);
-            accountSittings sittings = new accountSittings();//todo sittigns
+            accountSittings sittings = new accountSittings();//todo sittings
+            sittings.username = this.accountUsername;
+            sittings.password = this.accountPassword;
             sittings.openSittingsPage(sittings,true);
 
         }

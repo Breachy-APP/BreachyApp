@@ -78,7 +78,7 @@ public class LoginFrame extends JFrame implements ActionListener {
             String pwdText;
             userText = userTextField.getText();
             pwdText = passwordField.getText();
-            System.out.println(userText + pwdText);
+            System.out.println(userText + " : " +  pwdText + " Logged in Successfully");
             // add DB select
             //todo
             DBActions accessAccount = new DBActions(userText, pwdText);
@@ -86,8 +86,13 @@ public class LoginFrame extends JFrame implements ActionListener {
                 this.toFront();
                 setVisible(false);
                 mainPageFrame mainFrame = new mainPageFrame();
+                mainFrame.accountUsername = userText;
+                mainFrame.accountPassword = pwdText;
                 mainFrame.openMainPage(mainFrame, true);
                 System.out.println("Retrieve info");
+                
+                accountSittings editSittings = new accountSittings();
+                editSittings.getAccountData(userText, pwdText);
             }
             else {
                 JOptionPane.showMessageDialog(this,"Username/password is incorrect, please try again");

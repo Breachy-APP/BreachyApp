@@ -7,7 +7,12 @@ public class DBActions {
     private String password;
     private String Email;
     private String accountStatus;
+
+    public String [] accountData = new String[4];
     public DBActions(){
+
+        String username = this.username;
+        String password = this.password;
 
     }
     public DBActions(String username, String password, String Email){
@@ -45,7 +50,6 @@ public class DBActions {
     public String getAccountStatus(){
         return this.accountStatus;
     }
-
     public void insertAccount(){
         //todo
         try {
@@ -66,50 +70,68 @@ public class DBActions {
 
 
     }
-    public void retrieveAccountInfo(String username, String password) {
-        String email;
-        String status;
+    public String[] retrieveAccountInfo(String AUsername, String APassword) {
 
+        String AEmail,AStatus;
+        AEmail = getEmail();
+        AStatus = getAccountStatus();
+
+        accountSittings editData = new accountSittings();
         try{
 
             Connection dbConnection = DBConnection.getInstance().getConnection();
+
             Statement stmt = dbConnection.createStatement();
-            String query = "Select * from accounts;";
+            String query = "select * from accounts;";
+
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()){
-                if (rs.getString("username").equals(username) && rs.getString("upassword").equals(password)){
-
-                    email = rs.getString("email");
-                    status = rs.getString("accountStatus");
-                    //todo
-
+                if (rs.getString("username").equals(AUsername) && rs.getString("upassword").equals(APassword)){
+                    System.out.println(AUsername +" "+ APassword +" "+ AEmail +" "+ AStatus);
+                accountData[0] = username;
+                accountData[1] = password;
+                accountData [2] = rs.getString("email");
+                accountData[3] = rs.getString("accountstatus");
 
                 }
-
             }
-
-
-
         }catch (SQLException e){
             e.printStackTrace();
         }
-
+        return accountData;
     }
     public boolean authorizeAccountAccess(String username, String password){
         boolean isAuth = false;
+        String u,p,em,st;
+
         //todo
         try{
 
             Connection dbConnection = DBConnection.getInstance().getConnection();
             Statement stmt = dbConnection.createStatement();
-            String query = "select username, upassword from accounts;";
+            String query = "select * from accounts;";
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()){
                 if(rs.getString("username").equals(username) && rs.getString("upassword").equals(password)){
                     System.out.println("Login Successfully");
+
+                    setEmail(rs.getString("email"));
+
                     setAccountStatus("Active");
+
+
+                    setUsername(this.username);
+                    u= getUsername();
+                    setPassword(this.password);
+                    p = getPassword();
+                    setEmail(this.Email);
+                    em = getPassword();
+                    setAccountStatus(this.accountStatus);
+                    st = getAccountStatus();
+                    System.out.println(u + "Checking " + p + " ");
+                    retrieveAccountInfo(u,p);
 
                     isAuth = true;
 

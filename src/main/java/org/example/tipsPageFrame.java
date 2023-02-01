@@ -20,7 +20,7 @@ import java.awt.event.ActionListener;
         JLabel secureNetworkTip = new JLabel("7. Secure your network.");
         JLabel awayPirateTip = new JLabel("8. Stay away from pirated material.");
 
-        JLabel unsecurdWifiTip = new JLabel("9. Don’t use unsecured public Wi-Fi.");
+        JLabel unsecuredWifiTip = new JLabel("9. Don’t use unsecured public Wi-Fi.");
         JButton returnButton = new JButton("Return");
 
         tipsPageFrame() {
@@ -39,8 +39,8 @@ import java.awt.event.ActionListener;
         }
 
         @Override
-        public void actionPerformed(ActionEvent event) {
-            if (event.getSource() == returnButton) {
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == returnButton) {
                 this.toBack();
                 setVisible(false);
                 mainPageFrame mainPage = new mainPageFrame();
@@ -63,7 +63,7 @@ import java.awt.event.ActionListener;
             backUpTip.setForeground(Color.white);
             secureNetworkTip.setForeground(Color.white);
             awayPirateTip.setForeground(Color.white);
-            unsecurdWifiTip.setForeground(Color.white);
+            unsecuredWifiTip.setForeground(Color.white);
 
             tipsPageContainer.add(tipsLabel);
             tipsPageContainer.add(firewallTip);
@@ -74,7 +74,7 @@ import java.awt.event.ActionListener;
             tipsPageContainer.add(backUpTip);
             tipsPageContainer.add(secureNetworkTip);
             tipsPageContainer.add(awayPirateTip);
-            tipsPageContainer.add(unsecurdWifiTip);
+            tipsPageContainer.add(unsecuredWifiTip);
             tipsPageContainer.add(returnButton);
             tipsPageContainer.setBackground(new Color(44, 60, 120));
 
@@ -93,7 +93,7 @@ import java.awt.event.ActionListener;
             backUpTip.setSize(300, 400);
             secureNetworkTip.setSize(300, 450);
             awayPirateTip.setSize(300, 500);
-            unsecurdWifiTip.setSize(300, 550);
+            unsecuredWifiTip.setSize(300, 550);
             returnButton.setBounds(120, 400, 100, 30);
 
 

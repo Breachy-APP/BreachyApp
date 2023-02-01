@@ -14,17 +14,20 @@ import javax.swing.ImageIcon;
 
 public class accountSittings extends JFrame implements ActionListener {
     //todo sittings
-
+    String username;
+    String password;
+    String email;
+    String status;
     Container sittingsContainer = getContentPane();
     JLabel usernameLabel = new JLabel("USERNAME");
     JLabel passwordLabel = new JLabel("PASSWORD");
     JLabel emailLabel = new JLabel("EMAIL");
     JLabel statusLabel = new JLabel("Account Status");
 
-    JLabel usernameText = new JLabel("ff");
-    JLabel passwordText = new JLabel("ff");
-    JLabel emailText = new JLabel("ff");
-    JLabel statusText = new JLabel("ff");
+    JLabel usernameText = new JLabel();
+    JLabel passwordText = new JLabel();
+    JLabel emailText = new JLabel();
+    JLabel statusText = new JLabel();
 
     Icon editIcon = new ImageIcon("Edit_Icon3.jpg");
 
@@ -51,6 +54,7 @@ public class accountSittings extends JFrame implements ActionListener {
 
         sittingsFrame.setTitle("Account Sittings");
         sittingsFrame.setVisible(c);
+        sittingsFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         sittingsFrame.setBounds(600, 150, 350, 500);
         sittingsFrame.setResizable(false);
 
@@ -79,14 +83,15 @@ public class accountSittings extends JFrame implements ActionListener {
         EB.setBounds(270,90,30,20);
         SB.setBounds(270,120,30,20);
 
+        returnB.setBounds(120,400,100,30);
+
+        // todo fix problem
         /*
         usernameText.setText(editUserData.getUsername());
         passwordText.setText(editUserData.getPassword());
         emailText.setText(editUserData.getEmail());
         statusText.setText(editUserData.getAccountStatus());
-
-
-         */
+*/
 
     }
     public void addComponentsToContainer(){
@@ -106,6 +111,8 @@ public class accountSittings extends JFrame implements ActionListener {
         sittingsContainer.add(emailText);
         sittingsContainer.add(statusText);
 
+        sittingsContainer.add(returnB);
+
         sittingsContainer.setBackground(new Color(44,60,120));
 
     }
@@ -120,11 +127,45 @@ public class accountSittings extends JFrame implements ActionListener {
         returnB.addActionListener(this);
 
     }
+    public void getAccountData(String Susername, String Spassword) {
+
+        String [] accountData = new String[4];
+
+        DBActions auth = new DBActions(Susername, Spassword);
+
+        System.out.println(Susername +"SSSSSS"+ Spassword);
+
+            accountData = auth.retrieveAccountInfo(Susername, Spassword);
+            usernameText.setText(Susername);
+            passwordText.setText(Spassword);
+            emailText.setText(accountData[2]);
+            statusText.setText(accountData[3]);
+
+
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        if (e.getSource() == returnB){
 
+            this.toBack();
+            setVisible(false);
+            mainPageFrame mainPage = new mainPageFrame();
+            mainPage.openMainPage(mainPage, true);
 
+        }
+        if (e.getSource() == UB){
+            JOptionPane.showInputDialog("Enter new Username", usernameText.getText());
+        }
+        if (e.getSource() == PB){
+            JOptionPane.showInputDialog("Enter new Password", passwordText.getText());
+        }
+        if (e.getSource() == EB){
+            JOptionPane.showInputDialog("Enter new Email", emailText.getText());
+        }
+        if (e.getSource() == SB){
+            JOptionPane.showConfirmDialog(this,"Change Account Status to Active ?");
+        }
     }
 }

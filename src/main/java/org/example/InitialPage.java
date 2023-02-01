@@ -31,6 +31,7 @@ public class InitialPage extends JFrame implements ActionListener {
         LoginFrame logInFrame = new LoginFrame();
         logInFrame.setTitle("Login Form");
         logInFrame.setVisible(c);
+        logInFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         logInFrame.setBounds(600, 150, 350, 500);
         logInFrame.setResizable(false);
 
@@ -40,6 +41,7 @@ public class InitialPage extends JFrame implements ActionListener {
         SignUpFrame signUpFrame = new SignUpFrame();
         signUpFrame.setTitle("Sign Up Form");
         signUpFrame.setVisible(c);
+        signUpFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         signUpFrame.setBounds(600, 150, 350, 500);
         signUpFrame.setResizable(false);
 
