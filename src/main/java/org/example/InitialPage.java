@@ -18,6 +18,12 @@ public class InitialPage extends JFrame implements ActionListener {
         addComponentsToContainer();
         addActionEvent();
     }
+    public void openIntialPage(InitialPage initFrame, boolean c){
+        initFrame.setTitle("Initial Form");
+        initFrame.setVisible(c);
+        initFrame.setBounds(600, 150, 350, 500);
+        initFrame.setResizable(false);
+    }
     public void openLogInForm(boolean c) {
 
         LoginFrame logInFrame = new LoginFrame();
@@ -25,7 +31,6 @@ public class InitialPage extends JFrame implements ActionListener {
         logInFrame.setVisible(c);
         logInFrame.setBounds(600, 150, 350, 500);
         logInFrame.setResizable(false);
-
 
     }
     public static void openSignInForm(boolean c) {
@@ -41,10 +46,11 @@ public class InitialPage extends JFrame implements ActionListener {
         initPageContainer.setLayout(null);
     }
     public void setInitPageLocation(){
-        welcomeLabel.setBounds(80,30,155,30);
+        welcomeLabel.setBounds(80,30,160,45);
         signUPButton.setBounds(120,100,100,30);
         logInButton.setBounds(120,150,100,30);
         rememberMe.setBounds(100,190,150,30);
+
     }
     public void addComponentsToContainer(){
 
@@ -53,6 +59,8 @@ public class InitialPage extends JFrame implements ActionListener {
         initPageContainer.add(signUPButton);
         initPageContainer.add(logInButton);
         initPageContainer.add(rememberMe);
+        rememberMe.setBackground(new Color(44,60,120));
+        initPageContainer.setBackground(new Color(44,60,120));
 
 
     }
@@ -69,6 +77,7 @@ public class InitialPage extends JFrame implements ActionListener {
 
         if(e.getSource() == signUPButton){
             openSignInForm(true);
+
         }
         if(e.getSource() == logInButton){
             openLogInForm(true);

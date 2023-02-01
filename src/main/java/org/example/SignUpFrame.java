@@ -70,7 +70,9 @@ public class SignUpFrame extends JFrame implements ActionListener {
         singUpContainer.add(signUpButton);
         singUpContainer.add(resetButton);
         //bg
-        singUpContainer.setBackground(new Color(78, 178, 178));
+        agreement.setBackground(new Color(44,60,120));
+        showPassword.setBackground(new Color(44,60,120));
+        singUpContainer.setBackground(new Color(44, 60, 120));
     }
 
     public void addActionEvent() {
@@ -124,11 +126,13 @@ public class SignUpFrame extends JFrame implements ActionListener {
                     if (newAccount.alreadyExists(userNameText, passwordText)) {
                         JOptionPane.showMessageDialog(this, "Account Already Exists try to log in");
                     } else {
+                        System.out.println("Inserting... !");
                         newAccount.insertAccount();
-                        System.out.println("Insert successfully");
                     }
                     JOptionPane.showMessageDialog(this, "Welcome to our amazing app");
                     // todo open app page
+                    mainPageFrame mainFrame2 = new mainPageFrame();
+                    mainFrame2.openMainPage(mainFrame2, true);
                 }
         }
     }
@@ -144,10 +148,18 @@ public class SignUpFrame extends JFrame implements ActionListener {
         }
         else {
 
-            if (userTextField == null || emailField == null || createPasswordField == null || confirmPasswordField == null) {
+            if (userNameText == null)  {
                 JOptionPane.showMessageDialog(this, "please complete the information");
-            }else if (! emailText.contains("@")){
+            }else if (emailText == null) {
+                JOptionPane.showMessageDialog(this, "please complete the information");
+            }else if (passwordText == null){
+                JOptionPane.showMessageDialog(this, "please complete the information");
+            } else if (conPasswordText == null) {
+                JOptionPane.showMessageDialog(this, "please complete the information");
+            } else if (! emailText.contains("@")){
                 JOptionPane.showMessageDialog(this, "Invalid Email it should contain a host");
+            } else if (! emailText.endsWith(".com") || (! emailText.endsWith(".sa"))) {
+                JOptionPane.showMessageDialog(this, "Invalid Email it should contain a domain");
             } else if (passwordText.equals("") || !passwordText.equals(conPasswordText)) {
                 createPasswordField.setText("");
                 confirmPasswordField.setText("");
