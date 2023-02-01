@@ -20,6 +20,7 @@ public class SignUpFrame extends JFrame implements ActionListener {
     JButton resetButton = new JButton("RESET");
     JCheckBox showPassword = new JCheckBox("Show Password");
     JCheckBox agreement = new JCheckBox("Agree to Our Term");
+    JButton returnButton = new JButton("Return");
 
     SignUpFrame() {
         setLayoutManager();
@@ -39,6 +40,12 @@ public class SignUpFrame extends JFrame implements ActionListener {
         eMailLabel.setBounds(50, 100, 100, 30);
         createPasswordLabel.setBounds(50, 150, 100, 30);
         confirmPasswordLabel.setBounds(50, 200, 100, 30);
+        //label colors
+        userLabel.setForeground(Color.white);
+        eMailLabel.setForeground(Color.white);
+        createPasswordLabel.setForeground(Color.white);
+        confirmPasswordLabel.setForeground(Color.white);
+
         // Field's Locations
         userTextField.setBounds(160, 50, 150, 30);
         emailField.setBounds(160, 100, 150, 30);
@@ -46,9 +53,12 @@ public class SignUpFrame extends JFrame implements ActionListener {
         confirmPasswordField.setBounds(160, 200, 150, 30);
         // Button's location
         showPassword.setBounds(160, 250, 150, 30);
+        showPassword.setForeground(Color.white);
         agreement.setBounds(160, 300, 150, 30);
+        agreement.setForeground(Color.white);
         signUpButton.setBounds(50, 350, 100, 30);
         resetButton.setBounds(200, 350, 100, 30);
+        returnButton.setBounds(120,400,100,30);
 
     }
 
@@ -69,6 +79,8 @@ public class SignUpFrame extends JFrame implements ActionListener {
         //buttons
         singUpContainer.add(signUpButton);
         singUpContainer.add(resetButton);
+        singUpContainer.add(returnButton);
+
         //bg
         agreement.setBackground(new Color(44,60,120));
         showPassword.setBackground(new Color(44,60,120));
@@ -76,9 +88,11 @@ public class SignUpFrame extends JFrame implements ActionListener {
     }
 
     public void addActionEvent() {
+
         signUpButton.addActionListener(this);
         resetButton.addActionListener(this);
         showPassword.addActionListener(this);
+        returnButton.addActionListener(this);
     }
 
     @Override
@@ -131,9 +145,19 @@ public class SignUpFrame extends JFrame implements ActionListener {
                     }
                     JOptionPane.showMessageDialog(this, "Welcome to our amazing app");
                     // todo open app page
+                    this.toFront();
+                    setVisible(false);
                     mainPageFrame mainFrame2 = new mainPageFrame();
                     mainFrame2.openMainPage(mainFrame2, true);
                 }
+        }
+        if (e.getSource() == returnButton){
+
+            this.toBack();
+            setVisible(false);
+            InitialPage initpage = new InitialPage();
+            initpage.openIntialPage(initpage,true);
+
         }
     }
     public boolean isComplete(String userNameText, String emailText, String passwordText, String conPasswordText){

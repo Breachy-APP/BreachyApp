@@ -16,8 +16,13 @@ public class mainPageFrame extends JFrame implements ActionListener {
     JCheckBoxMenuItem searchByVersion = new JCheckBoxMenuItem("Search By Version");
     JCheckBoxMenuItem searchByKeyWord = new JCheckBoxMenuItem("General Search");
     JButton logOutButton = new JButton("LOGOUT");
-    JMenuBar menuBar = new JMenuBar();
-    JMenuItem x= new JMenuItem("X");
+    JMenuBar menuBar = new JMenuBar(); //todo
+    JMenuItem x= new JMenuItem("X"); // todo
+    //tips page button
+    JButton tipsButton = new JButton("TIPS !!");
+    JLabel dt = new JLabel("press for The Daily Tips");
+
+    JButton accountSittings = new JButton("Account Sittings");
 
     String accountUsername;
     String accountPassword;
@@ -36,15 +41,36 @@ public class mainPageFrame extends JFrame implements ActionListener {
     }
     public void setLocationAndSize(){
 
-        searchField.setBounds(12,15,300,30);
         searchLabel.setBounds(13, 15, 100, 30);
+        searchLabel.setForeground(Color.white);
+        searchField.setBounds(12,15,300,25);
+
         searchButton.setBounds(120,49,100,30);
+
         searchByID.setBounds(105, 100, 150, 30);
+        searchByID.setForeground(Color.white);
+        searchByID.setBackground(new Color(44,60,120));
+
         searchBySystem.setBounds(105, 130, 150,30);
+        searchBySystem.setForeground(Color.white);
+        searchBySystem.setBackground(new Color(44,60,120));
+
         searchByVersion.setBounds(105,160, 150, 30);
+        searchByVersion.setForeground(Color.white);
+        searchByVersion.setBackground(new Color(44,60,120));
+
         searchByKeyWord.setBounds(105, 190, 150,30);
-        logOutButton.setBounds(120, 400, 100,30 );
+        searchByKeyWord.setForeground(Color.white);
+        searchByKeyWord.setBackground(new Color(44,60,120));
+
+        logOutButton.setBounds(200, 400, 100,30 );
+        accountSittings.setBounds(30,400,150,30);
+
         menuBar.setBounds(500,500,300,30);
+
+        dt.setBounds(100,270,200,30);
+        dt.setForeground(Color.WHITE);
+        tipsButton.setBounds(120,300,100,90);
 
     }
     public void openMainPage(mainPageFrame mainFrame, boolean c){
@@ -53,7 +79,6 @@ public class mainPageFrame extends JFrame implements ActionListener {
         mainFrame.setVisible(c);
         mainFrame.setBounds(600, 150, 350, 500);
         mainFrame.setResizable(false);
-
 
     }
 
@@ -67,7 +92,10 @@ public class mainPageFrame extends JFrame implements ActionListener {
         mainPageContainer.add(searchByVersion);
         mainPageContainer.add(searchByKeyWord);
         mainPageContainer.add(logOutButton);
-        mainPageContainer.add(menuBar);
+        mainPageContainer.add(accountSittings);
+        mainPageContainer.add(menuBar);//todo
+        mainPageContainer.add(tipsButton);
+        mainPageContainer.add(dt);
         mainPageContainer.setBackground(new Color(44, 60, 120));
 
     }
@@ -76,19 +104,17 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
         searchButton.addActionListener(this);
         logOutButton.addActionListener(this);
+        accountSittings.addActionListener(this);
         searchByID.addActionListener(this);
         searchBySystem.addActionListener(this);
         searchByVersion.addActionListener(this);
         searchByKeyWord.addActionListener(this);
+        tipsButton.addActionListener(this);
 
     }
-
-
     public void setLayoutManager() {
         mainPageContainer.setLayout(null);
     }
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -101,13 +127,26 @@ public class mainPageFrame extends JFrame implements ActionListener {
         }
         if(e.getSource() == logOutButton){
 
+            this.toBack();
+            setVisible(false);
             InitialPage initFrame = new InitialPage();
             initFrame.openIntialPage(initFrame, true);
 
         }
+        if (e.getSource() == tipsButton){
+            this.toFront();
+            setVisible(false);
+            tipsPageFrame tipsPage = new tipsPageFrame();
+            tipsPage.openTipsPage(tipsPage,true);
+
+        }
+        if (e.getSource() == accountSittings){
+
+            this.toFront();
+            setVisible(false);
+            accountSittings sittings = new accountSittings();//todo sittigns
+            sittings.openSittingsPage(sittings,true);
+
+        }
     }
-
-
-    //todo
-
 }

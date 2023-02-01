@@ -16,6 +16,7 @@ public class LoginFrame extends JFrame implements ActionListener {
     JButton loginButton = new JButton("LOGIN");
     JButton resetButton = new JButton("RESET");
     JCheckBox showPassword = new JCheckBox("Show Password");
+    JButton returnButton = new JButton("Return");
 
 
     LoginFrame() {
@@ -32,13 +33,17 @@ public class LoginFrame extends JFrame implements ActionListener {
 
     public void setLocationAndSize() {
         userLabel.setBounds(50, 150, 100, 30);
+        userLabel.setForeground(Color.white);
         passwordLabel.setBounds(50, 220, 100, 30);
+        passwordLabel.setForeground(Color.white);
         userTextField.setBounds(150, 150, 150, 30);
         passwordField.setBounds(150, 220, 150, 30);
         showPassword.setBounds(150, 250, 150, 30);
+        showPassword.setBackground(new Color(44,60,120));
+        showPassword.setForeground(Color.white);
         loginButton.setBounds(50, 300, 100, 30);
         resetButton.setBounds(200, 300, 100, 30);
-
+        returnButton.setBounds(120,400,100,30);
 
     }
 
@@ -51,6 +56,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         container.add(showPassword);
         container.add(loginButton);
         container.add(resetButton);
+        container.add(returnButton);
         container.setBackground(new Color(44, 60,120));
     }
 
@@ -59,6 +65,8 @@ public class LoginFrame extends JFrame implements ActionListener {
         loginButton.addActionListener(this);
         resetButton.addActionListener(this);
         showPassword.addActionListener(this);
+        returnButton.addActionListener(this);
+
     }
 
 
@@ -74,12 +82,11 @@ public class LoginFrame extends JFrame implements ActionListener {
             // add DB select
             //todo
             DBActions accessAccount = new DBActions(userText, pwdText);
-            if(accessAccount.retrieveAccountInfo(userText, pwdText)){
-
+            if(accessAccount.authorizeAccountAccess(userText, pwdText)){
+                this.toFront();
+                setVisible(false);
                 mainPageFrame mainFrame = new mainPageFrame();
                 mainFrame.openMainPage(mainFrame, true);
-                InitialPage x = new InitialPage();
-                x.openIntialPage(x,false);
                 System.out.println("Retrieve info");
             }
             else {
@@ -100,6 +107,14 @@ public class LoginFrame extends JFrame implements ActionListener {
             } else {
                 passwordField.setEchoChar('*');
             }
+        }
+        if (e.getSource() == returnButton){
+
+            this.toBack();
+            setVisible(false);
+            InitialPage initpage = new InitialPage();
+            initpage.openIntialPage(initpage,true);
+
         }
     }
 }

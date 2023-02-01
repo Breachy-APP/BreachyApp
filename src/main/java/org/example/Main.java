@@ -9,10 +9,5 @@ public class Main {
         InitialPage initFrame = new InitialPage();
         initFrame.openIntialPage(initFrame, true);
 
-
-
-
-
-
     }
 }

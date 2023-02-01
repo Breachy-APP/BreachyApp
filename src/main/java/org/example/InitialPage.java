@@ -19,8 +19,10 @@ public class InitialPage extends JFrame implements ActionListener {
         addActionEvent();
     }
     public void openIntialPage(InitialPage initFrame, boolean c){
+
         initFrame.setTitle("Initial Form");
         initFrame.setVisible(c);
+        initFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         initFrame.setBounds(600, 150, 350, 500);
         initFrame.setResizable(false);
     }
@@ -46,10 +48,14 @@ public class InitialPage extends JFrame implements ActionListener {
         initPageContainer.setLayout(null);
     }
     public void setInitPageLocation(){
-        welcomeLabel.setBounds(80,30,160,45);
+        welcomeLabel.setBounds(70,30,250,45);
+        welcomeLabel.setFont(new Font("Calibre", Font.BOLD, 16));
+        welcomeLabel.setForeground(Color.white);
         signUPButton.setBounds(120,100,100,30);
         logInButton.setBounds(120,150,100,30);
-        rememberMe.setBounds(100,190,150,30);
+        rememberMe.setBounds(110,190,150,30);
+        rememberMe.setFont(new Font("Calibre", Font.ITALIC, 12));
+        rememberMe.setForeground(Color.white);
 
     }
     public void addComponentsToContainer(){
@@ -76,10 +82,14 @@ public class InitialPage extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == signUPButton){
+            this.toFront();
+            setVisible(false);
             openSignInForm(true);
 
         }
         if(e.getSource() == logInButton){
+            this.toFront();
+            setVisible(false);
             openLogInForm(true);
         }
 
