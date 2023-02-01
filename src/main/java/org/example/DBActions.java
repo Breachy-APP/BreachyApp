@@ -66,8 +66,37 @@ public class DBActions {
 
 
     }
+    public void retrieveAccountInfo(String username, String password) {
+        String email;
+        String status;
 
-    public boolean retrieveAccountInfo(String username, String password){
+        try{
+
+            Connection dbConnection = DBConnection.getInstance().getConnection();
+            Statement stmt = dbConnection.createStatement();
+            String query = "Select * from accounts;";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()){
+                if (rs.getString("username").equals(username) && rs.getString("upassword").equals(password)){
+
+                    email = rs.getString("email");
+                    status = rs.getString("accountStatus");
+                    //todo
+
+
+                }
+
+            }
+
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+    public boolean authorizeAccountAccess(String username, String password){
         boolean isAuth = false;
         //todo
         try{
@@ -156,6 +185,7 @@ public class DBActions {
 
     public void updateAccount(){
         //todo
+
     }
     public void deleteAccount(){
         //todo  needs a GUI DELETE Button
