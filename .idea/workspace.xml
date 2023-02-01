@@ -6,15 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6ce3be00-e642-43f1-8d0a-35edfe1fcecd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
+
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DBActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DBActions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/InitialPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/InitialPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LoginFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SignUpFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SignUpFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainPageFrame.java" afterDir="false" />
-=======
->>>>>>> 6db2844c33fb4cac2fc1daa73f0670f4c1f7286f
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
