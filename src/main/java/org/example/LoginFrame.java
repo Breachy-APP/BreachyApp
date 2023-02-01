@@ -90,7 +90,7 @@ public class LoginFrame extends JFrame implements ActionListener {
                 mainFrame.accountPassword = pwdText;
                 mainFrame.openMainPage(mainFrame, true);
                 System.out.println("Retrieve info");
-                
+
                 accountSittings editSittings = new accountSittings();
                 editSittings.getAccountData(userText, pwdText);
             }
