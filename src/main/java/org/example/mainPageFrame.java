@@ -22,7 +22,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
     JButton tipsButton = new JButton("TIPS !!");
     JLabel dt = new JLabel("press for The Daily Tips");
 
-    JButton accountSittings = new JButton("Account Sittings");
+    JButton accountSittings = new JButton("Account Settings");
 
     String accountUsername;
     String accountPassword;
