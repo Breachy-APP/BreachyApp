@@ -1,7 +1,6 @@
-package org.example;
+package org.breachy;
 
 import java.sql.*;
-import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {

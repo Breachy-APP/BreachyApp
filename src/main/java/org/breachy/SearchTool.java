@@ -1,4 +1,4 @@
-package org.example;
+package org.breachy;
 
 public class SearchTool {
     String breachID;

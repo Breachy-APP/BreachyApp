@@ -1,7 +1,7 @@
 
 // The Reference to this class is https://www.tutorialsfield.com/login-form-in-java-swing-with-source-code/
 
-package org.example;
+package org.breachy;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
