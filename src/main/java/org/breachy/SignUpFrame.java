@@ -82,9 +82,9 @@ public class SignUpFrame extends JFrame implements ActionListener {
         singUpContainer.add(returnButton);
 
         //bg
-        agreement.setBackground(new Color(44,60,120));
-        showPassword.setBackground(new Color(44,60,120));
-        singUpContainer.setBackground(new Color(44, 60, 120));
+        agreement.setBackground(InitialPage.color);
+        showPassword.setBackground(InitialPage.color);
+        singUpContainer.setBackground(InitialPage.color);
     }
 
     public void addActionEvent() {

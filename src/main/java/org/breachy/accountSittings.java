@@ -132,7 +132,7 @@ public class accountSittings extends JFrame implements ActionListener {
 
         sittingsContainer.add(returnB);
 
-        sittingsContainer.setBackground(new Color(44,60,120));
+        sittingsContainer.setBackground(InitialPage.color);
 
         sittingsContainer.add(usernameCField);
         sittingsContainer.add(passwordCField);

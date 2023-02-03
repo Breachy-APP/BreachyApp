@@ -11,6 +11,8 @@ public class InitialPage extends JFrame implements ActionListener {
     JButton signUPButton = new JButton("SIGN UP");
     JButton logInButton = new JButton("LOG IN");
     JCheckBox rememberMe = new JCheckBox("REMEMBER ME");
+    JToggleButton ChangeColor = new JToggleButton("Dark Theme");
+    public static Color color=new Color(160,160,170);
 
     InitialPage(){
         setLayoutManager();
@@ -58,7 +60,7 @@ public class InitialPage extends JFrame implements ActionListener {
         rememberMe.setBounds(110,190,150,30);
         rememberMe.setFont(new Font("Calibre", Font.ITALIC, 12));
         rememberMe.setForeground(Color.white);
-
+        ChangeColor.setBounds(107,300,130,30);
     }
     public void addComponentsToContainer(){
 
@@ -67,8 +69,9 @@ public class InitialPage extends JFrame implements ActionListener {
         initPageContainer.add(signUPButton);
         initPageContainer.add(logInButton);
         initPageContainer.add(rememberMe);
-        rememberMe.setBackground(new Color(44,60,120));
-        initPageContainer.setBackground(new Color(44,60,120));
+        rememberMe.setBackground(color);
+        initPageContainer.setBackground(color);
+        initPageContainer.add(ChangeColor);
 
 
     }
@@ -77,7 +80,7 @@ public class InitialPage extends JFrame implements ActionListener {
         signUPButton.addActionListener(this);
         logInButton.addActionListener(this);
         rememberMe.addActionListener(this);
-
+        ChangeColor.addActionListener(this);
     }
 
     @Override
@@ -95,6 +98,18 @@ public class InitialPage extends JFrame implements ActionListener {
             openLogInForm(true);
         }
 
+        if(ChangeColor.isSelected()){
+            color = new Color(40,40,40);
+            initPageContainer.setBackground(color);
+            rememberMe.setBackground(color);
+            ChangeColor.setText("Light Theme");
+        }else{
+            color=new Color(160,160,170);
+            initPageContainer.setBackground(color);
+            rememberMe.setBackground(color);
+            ChangeColor.setText("Dark Theme");
+        }
+    }
 
     }
-}
+
