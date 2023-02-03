@@ -1,5 +1,10 @@
 package org.example;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class SearchTool {
     String breachID;
     String breachSystem;
@@ -19,24 +24,112 @@ public class SearchTool {
     }
 
     public String searchByID(String breachID){
-        String res = searching.searchForBreach(breachID);
-        return res;
+
+        String result = null;
+
+        try {
+
+            Connection dbConnection = DBConnection.getInstance().getConnection();
+            Statement Stmt = dbConnection.createStatement();
+            String query = "Select * from breaches;";
+            ResultSet rs = Stmt.executeQuery(query);
+
+            while (rs.next()) {
+                if (rs.getString("breachid").equalsIgnoreCase(breachID)) {
+                    result = rs.getString("breachid");
+
+
+                } else {
+                    result = "No Matches";
+
+                }
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return result;
     }
     public  String searchBySystem(String breachSystem){
-        String res = searching.searchForBreach(breachSystem);
-        return res;
-        //todo
+        String result = null;
+
+        try {
+
+            Connection dbConnection = DBConnection.getInstance().getConnection();
+            Statement Stmt = dbConnection.createStatement();
+            String query = "Select * from breaches;";
+            ResultSet rs = Stmt.executeQuery(query);
+            while (rs.next()) {
+                if (rs.getString("breachsystem").equalsIgnoreCase(breachSystem)) {
+                    result = rs.getString("breachsystem");
+
+
+                } else {
+                    result = "No Matches";
+
+                }
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return result;
 
     }
     public String searchByVersion(String breachSysVersion){
-        String res = searching.searchForBreach(breachSysVersion);
-        return res;
+        String result = null;
+
+        try {
+
+            Connection dbConnection = DBConnection.getInstance().getConnection();
+            Statement Stmt = dbConnection.createStatement();
+            String query = "Select * from breaches;";
+            ResultSet rs = Stmt.executeQuery(query);
+            while (rs.next()) {
+                if (rs.getString("breachSysVersion").equalsIgnoreCase(breachSysVersion)) {
+                    result = rs.getString("breachSysVersion");
+
+
+                } else {
+                    result = "No Matches";
+
+                }
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return result;
 
     }
     public String searchByDescription(String breachDescription){
-        String res = searching.searchForBreach(breachDescription);
-        return res;
+        String result = null;
+
+        try {
+
+            Connection dbConnection = DBConnection.getInstance().getConnection();
+            Statement Stmt = dbConnection.createStatement();
+            String query = "Select * from breaches;";
+            ResultSet rs = Stmt.executeQuery(query);
+            while (rs.next()) {
+                if (rs.getString("breachDescription").equalsIgnoreCase(breachDescription)) {
+                    result = rs.getString("breachDescription");
+
+
+                } else {
+                    result = "No Matches";
+
+                }
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return result;
     }
 
 
+    public void search(String req) {
+
+    }
 }

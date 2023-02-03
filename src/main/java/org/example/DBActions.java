@@ -135,19 +135,13 @@ public class DBActions {
 
                     isAuth = true;
 
-                    // todo app accessed page
-                }
-                else{
-                    System.out.println("No match, searching...");
-
                 }
             }
-
-
         }
         catch (SQLException e){
             e.printStackTrace();
         }
+
         return isAuth;
     }
     public boolean alreadyExists(String username, String password){

@@ -115,11 +115,36 @@ public class mainPageFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        SearchTool searchForBreach = new SearchTool();
+
         if(e.getSource() == searchButton){
 
-            String searchText = searchField.getText();
-            DBActions searchForBreach = new DBActions();
-            String theBreach = searchForBreach.searchForBreach(searchText);
+            String searchID,searchSys, searchVersion, searchGen, theBreach = null;
+
+            if(searchByID.isSelected()){
+
+                searchID = searchField.getText();
+                theBreach = searchForBreach.searchByID(searchID);
+
+            }
+            if(searchBySystem.isSelected()){
+
+                searchSys = searchField.getText();
+                theBreach = searchForBreach.searchBySystem(searchSys);
+
+            }
+            if(searchByVersion.isSelected()){
+
+                searchVersion = searchField.getText();
+                theBreach = searchForBreach.searchByVersion(searchVersion);
+
+            }
+            if(searchByKeyWord.isSelected()){
+
+                searchGen = searchField.getText();
+                theBreach = searchForBreach.searchByDescription(searchGen);
+
+            }
             System.out.println(theBreach);
         }
         if(e.getSource() == logOutButton){
