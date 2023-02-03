@@ -119,7 +119,8 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
         if(e.getSource() == searchButton){
 
-            String searchID,searchSys, searchVersion, searchGen, theBreach = null;
+            String searchID,searchSys, searchVersion, searchGen;
+            String theBreach = "";
 
             if(searchByID.isSelected()){
 
@@ -131,6 +132,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
                 searchSys = searchField.getText();
                 theBreach = searchForBreach.searchBySystem(searchSys);
+
 
             }
             if(searchByVersion.isSelected()){
@@ -145,7 +147,17 @@ public class mainPageFrame extends JFrame implements ActionListener {
                 theBreach = searchForBreach.searchByDescription(searchGen);
 
             }
-            System.out.println(theBreach);
+            if((! searchByID.isSelected()) && (! searchBySystem.isSelected()) && (! searchByVersion.isSelected()) && (! searchByKeyWord.isSelected())){
+                searchGen = searchField.getText();
+                theBreach = searchForBreach.search(searchGen);
+
+            }
+            if (!theBreach.equalsIgnoreCase(" ")){
+                System.out.println("final result "+theBreach);
+                JOptionPane.showMessageDialog(this,theBreach);
+            }
+
+
         }
         if(e.getSource() == logOutButton){
 
