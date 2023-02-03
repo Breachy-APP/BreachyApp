@@ -69,9 +69,6 @@ public class accountSittings extends JFrame implements ActionListener {
 
     JButton returnB = new JButton("Return");
 
-    DBActions editUserData = new DBActions();
-
-
     accountSittings() {
 
         setLayoutManager();

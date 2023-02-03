@@ -89,8 +89,10 @@ public class DBActions {
                 if (rs.getString("username").equals(AUsername) && rs.getString("upassword").equals(APassword)){
                     System.out.println(AUsername +" "+ APassword +" "+ AEmail +" "+ AStatus);
                     accountData = AUsername +" : "+ APassword +" : "+ AEmail +" : "+ AStatus;
-                    accountSittings x=  new accountSittings();
-                    x.getAccountData(accountData);
+
+                    accountSittings sittings = new accountSittings();
+                    sittings.openSittingsPage(sittings,false);
+                    sittings.getAccountData(accountData);
                 }
 
             }
