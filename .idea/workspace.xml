@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6ce3be00-e642-43f1-8d0a-35edfe1fcecd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/DBActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/DBActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/InitialPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/InitialPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/SignUpFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/SignUpFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/accountSittings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/accountSittings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/mainPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/mainPageFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/tipsPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/tipsPageFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +54,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;269&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/Hamza Helal Dubh/Desktop/6th Semester/SWE-251/Project251/BreachyApp/src/main/java/org/example&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/BaRaa/IntelliJ IDEA Projects/unit-testing-and-coverage-iAmSHEVA&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/96655/OneDrive/Desktop/my-first-assignment/BreachyApp&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,

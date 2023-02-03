@@ -39,7 +39,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         userTextField.setBounds(150, 150, 150, 30);
         passwordField.setBounds(150, 220, 150, 30);
         showPassword.setBounds(150, 250, 150, 30);
-        showPassword.setBackground(new Color(44,60,120));
+        showPassword.setBackground(InitialPage.color);
         showPassword.setForeground(Color.white);
         loginButton.setBounds(50, 300, 100, 30);
         resetButton.setBounds(200, 300, 100, 30);
@@ -57,7 +57,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         container.add(loginButton);
         container.add(resetButton);
         container.add(returnButton);
-        container.setBackground(new Color(44, 60,120));
+        container.setBackground(InitialPage.color);
     }
 
     public void addActionEvent() {

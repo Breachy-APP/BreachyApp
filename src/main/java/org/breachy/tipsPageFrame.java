@@ -76,7 +76,7 @@ import java.awt.event.ActionListener;
             tipsPageContainer.add(awayPirateTip);
             tipsPageContainer.add(unsecuredWifiTip);
             tipsPageContainer.add(returnButton);
-            tipsPageContainer.setBackground(new Color(44, 60, 120));
+            tipsPageContainer.setBackground(InitialPage.color);
 
 
         }
