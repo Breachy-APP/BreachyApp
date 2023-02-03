@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ce3be00-e642-43f1-8d0a-35edfe1fcecd" name="Changes" comment="" />
+    <list default="true" id="6ce3be00-e642-43f1-8d0a-35edfe1fcecd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +31,9 @@
         <option name="workspaceImportEnabled" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2KdIezzSIkvOiFHDnnygwVDVWgS" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -55,7 +60,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.BreachyAppTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.breachy.Main" />
       <module name="BreachyApp" />
@@ -118,8 +123,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.BreachyAppTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.BreachyAppTest.shouldDisplayINITIALpage" />
         <item itemvalue="JUnit.BreachyAppTest.shouldDisplayMAINpage" />
       </list>
