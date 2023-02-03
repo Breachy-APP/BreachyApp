@@ -5,12 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ce3be00-e642-43f1-8d0a-35edfe1fcecd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DBActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DBActions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SearchTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SearchTool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainPageFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/BreachyAppTest.java" beforeDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DBActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/DBActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/InitialPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/InitialPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SearchTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/SearchTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SignUpFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/SignUpFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accountSittings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/accountSittings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/mainPageFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/tipsPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/tipsPageFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/BreachyAppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/breachy/BreachyAppTest.java" afterDir="false" />
+>>>>>>> b2fdaa37e2e4072c9b0079dba31bc64d2f2cab1b
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,9 +65,10 @@
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "269",
     "last_directory_selection": "C:/Users/Hamza Helal Dubh/Desktop/6th Semester/SWE-251/Project251/BreachyApp/src/main/java/org/example",
     "last_opened_file_path": "C:/Users/BaRaa/IntelliJ IDEA Projects/unit-testing-and-coverage-iAmSHEVA",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -61,13 +77,21 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+<<<<<<< HEAD
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="BreachyApp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.BreachyAppTest" />
+=======
+      <option name="MAIN_CLASS_NAME" value="org.breachy.Main" />
+      <module name="untitled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.breachy.*" />
+>>>>>>> b2fdaa37e2e4072c9b0079dba31bc64d2f2cab1b
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -79,12 +103,16 @@
       <module name="BreachyApp" />
       <extension name="coverage">
         <pattern>
+<<<<<<< HEAD
           <option name="PATTERN" value="org.example.BreachyAppTest" />
+=======
+          <option name="PATTERN" value="org.breachy.*" />
+>>>>>>> b2fdaa37e2e4072c9b0079dba31bc64d2f2cab1b
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.BreachyAppTest" />
+      <option name="MAIN_CLASS_NAME" value="org.breachy.BreachyAppTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -94,12 +122,16 @@
       <module name="BreachyApp" />
       <extension name="coverage">
         <pattern>
+<<<<<<< HEAD
           <option name="PATTERN" value="org.example.BreachyAppTest" />
+=======
+          <option name="PATTERN" value="org.breachy.*" />
+>>>>>>> b2fdaa37e2e4072c9b0079dba31bc64d2f2cab1b
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.BreachyAppTest" />
+      <option name="MAIN_CLASS_NAME" value="org.breachy.BreachyAppTest" />
       <option name="METHOD_NAME" value="shouldDisplayINITIALpage" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -110,12 +142,16 @@
       <module name="BreachyApp" />
       <extension name="coverage">
         <pattern>
+<<<<<<< HEAD
           <option name="PATTERN" value="org.example.BreachyAppTest" />
+=======
+          <option name="PATTERN" value="org.breachy.*" />
+>>>>>>> b2fdaa37e2e4072c9b0079dba31bc64d2f2cab1b
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.BreachyAppTest" />
+      <option name="MAIN_CLASS_NAME" value="org.breachy.BreachyAppTest" />
       <option name="METHOD_NAME" value="shouldDisplayMAINpage" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">

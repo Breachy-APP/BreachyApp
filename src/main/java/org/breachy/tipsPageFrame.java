@@ -1,4 +1,4 @@
-package org.example;
+package org.breachy;
 
 import javax.swing.*;
 import java.awt.*;

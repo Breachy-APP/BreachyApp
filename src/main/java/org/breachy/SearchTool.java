@@ -1,4 +1,4 @@
-package org.example;
+package org.breachy;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

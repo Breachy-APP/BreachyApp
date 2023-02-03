@@ -1,5 +1,5 @@
 
-package org.example;
+package org.breachy;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ import io.github.cdimascio.dotenv.Dotenv;
         private final int port;
         private final String DBName;
         private Connection connection;
-        private static org.example.DBConnection instance;
+        private static org.breachy.DBConnection instance;
 
         // SECRET TODO
         Dotenv dotenv = Dotenv.load();
