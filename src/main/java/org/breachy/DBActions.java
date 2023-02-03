@@ -8,7 +8,6 @@ public class DBActions {
     private String Email;
     private String accountStatus;
 
-    public String [] accountData = new String[4];
     public DBActions(){
 
         String username = this.username;
@@ -70,12 +69,12 @@ public class DBActions {
 
 
     }
-    public String[] retrieveAccountInfo(String AUsername, String APassword) {
+    public String retrieveAccountInfo(String AUsername, String APassword) {
 
         String AEmail,AStatus;
         AEmail = getEmail();
         AStatus = getAccountStatus();
-
+        String accountData = "";
         accountSittings editData = new accountSittings();
         try{
 
@@ -89,12 +88,11 @@ public class DBActions {
             while (rs.next()){
                 if (rs.getString("username").equals(AUsername) && rs.getString("upassword").equals(APassword)){
                     System.out.println(AUsername +" "+ APassword +" "+ AEmail +" "+ AStatus);
-                accountData[0] = username;
-                accountData[1] = password;
-                accountData [2] = rs.getString("email");
-                accountData[3] = rs.getString("accountstatus");
-
+                    accountData = AUsername +" : "+ APassword +" : "+ AEmail +" : "+ AStatus;
+                    accountSittings x=  new accountSittings();
+                    x.getAccountData(accountData);
                 }
+
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -131,7 +129,8 @@ public class DBActions {
                     setAccountStatus(this.accountStatus);
                     st = getAccountStatus();
                     System.out.println(u + "Checking " + p + " ");
-                    retrieveAccountInfo(u,p);
+
+                    System.out.println("siuuuuuuuuuuuuuuu " + retrieveAccountInfo(u,p));
 
                     isAuth = true;
 

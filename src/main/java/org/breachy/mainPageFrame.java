@@ -179,9 +179,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
             this.toFront();
             setVisible(false);
-            accountSittings sittings = new accountSittings();//todo sittings
-            sittings.username = this.accountUsername;
-            sittings.password = this.accountPassword;
+            accountSittings sittings = new accountSittings();
             sittings.openSittingsPage(sittings,true);
 
         }

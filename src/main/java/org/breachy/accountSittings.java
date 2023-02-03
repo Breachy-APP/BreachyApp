@@ -10,20 +10,49 @@ import javax.swing.ImageIcon;
 
 public class accountSittings extends JFrame implements ActionListener {
     //todo sittings
-    String username;
-    String password;
-    String email;
-    String status;
+    private String username;
+    private String password;
+    private String email;
+    private String status;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     Container sittingsContainer = getContentPane();
     JLabel usernameLabel = new JLabel("USERNAME");
     JLabel passwordLabel = new JLabel("PASSWORD");
     JLabel emailLabel = new JLabel("EMAIL");
     JLabel statusLabel = new JLabel("Account Status");
 
-    JLabel usernameText = new JLabel();
-    JLabel passwordText = new JLabel();
-    JLabel emailText = new JLabel();
-    JLabel statusText = new JLabel();
 
     Icon editIcon = new ImageIcon("Edit_Icon3.jpg");
 
@@ -31,6 +60,12 @@ public class accountSittings extends JFrame implements ActionListener {
     JButton PB = new JButton(editIcon);
     JButton EB = new JButton(editIcon);
     JButton SB = new JButton(editIcon);
+
+    JTextField usernameCField = new JTextField(getUsername());
+    JTextField passwordCField = new JTextField(getPassword());
+    JTextField emailCField = new JTextField(getEmail());
+    JTextField statusCField = new JTextField(getStatus());
+
 
     JButton returnB = new JButton("Return");
 
@@ -69,11 +104,6 @@ public class accountSittings extends JFrame implements ActionListener {
         statusLabel.setBounds(20,120,100,30);
         statusLabel.setForeground(Color.white);
 
-        usernameText.setBounds(110,30,100,20);
-        passwordText.setBounds(110,60,100,20);
-        emailText.setBounds(110,90,100,20);
-        statusText.setBounds(110,120,100,20);
-
         UB.setBounds(270,30,30,20);
         PB.setBounds(270,60,30,20);
         EB.setBounds(270,90,30,20);
@@ -81,13 +111,11 @@ public class accountSittings extends JFrame implements ActionListener {
 
         returnB.setBounds(120,400,100,30);
 
-        // todo fix problem
-        /*
-        usernameText.setText(editUserData.getUsername());
-        passwordText.setText(editUserData.getPassword());
-        emailText.setText(editUserData.getEmail());
-        statusText.setText(editUserData.getAccountStatus());
-*/
+        usernameCField.setBounds(120,30,120,20);
+        passwordCField.setBounds(120,60,120,20);
+        emailCField.setBounds(120,90,120,20);
+        statusCField.setBounds(120,120,120,20);
+
 
     }
     public void addComponentsToContainer(){
@@ -102,14 +130,14 @@ public class accountSittings extends JFrame implements ActionListener {
         sittingsContainer.add(EB);
         sittingsContainer.add(SB);
 
-        sittingsContainer.add(usernameText);
-        sittingsContainer.add(passwordText);
-        sittingsContainer.add(emailText);
-        sittingsContainer.add(statusText);
-
         sittingsContainer.add(returnB);
 
         sittingsContainer.setBackground(new Color(44,60,120));
+
+        sittingsContainer.add(usernameCField);
+        sittingsContainer.add(passwordCField);
+        sittingsContainer.add(emailCField);
+        sittingsContainer.add(statusCField);
 
     }
 
@@ -123,20 +151,16 @@ public class accountSittings extends JFrame implements ActionListener {
         returnB.addActionListener(this);
 
     }
-    public void getAccountData(String Susername, String Spassword) {
+    public void getAccountData(String accountSittingsData) {
 
-        String [] accountData = new String[4];
+        String [] DBAD = new String[4];
+        DBAD = accountSittingsData.split(" : ");
+        System.out.println("sheeeeees "+accountSittingsData);
 
-        DBActions auth = new DBActions(Susername, Spassword);
-
-        System.out.println(Susername +"SSSSSS"+ Spassword);
-
-            accountData = auth.retrieveAccountInfo(Susername, Spassword);
-            usernameText.setText(Susername);
-            passwordText.setText(Spassword);
-            emailText.setText(accountData[2]);
-            statusText.setText(accountData[3]);
-
+        setUsername(DBAD[0]);
+        setPassword(DBAD[1]);
+        setEmail(DBAD[2]);
+        setStatus(DBAD[3]);
 
     }
 
@@ -152,16 +176,16 @@ public class accountSittings extends JFrame implements ActionListener {
 
         }
         if (e.getSource() == UB){
-            JOptionPane.showInputDialog("Enter new Username", usernameText.getText());
+            JOptionPane.showInputDialog("Username",getUsername());
         }
         if (e.getSource() == PB){
-            JOptionPane.showInputDialog("Enter new Password", passwordText.getText());
+            JOptionPane.showInputDialog("Enter new Password",getPassword());
         }
         if (e.getSource() == EB){
-            JOptionPane.showInputDialog("Enter new Email", emailText.getText());
+            JOptionPane.showInputDialog("Enter new Email", getEmail());
         }
-        if (e.getSource() == SB){
-            JOptionPane.showConfirmDialog(this,"Change Account Status to Active ?");
+        if (e.getSource() == EB){
+            JOptionPane.showInputDialog("Enter new Email", getStatus());
         }
     }
 }

@@ -91,8 +91,6 @@ public class LoginFrame extends JFrame implements ActionListener {
                 mainFrame.openMainPage(mainFrame, true);
                 System.out.println("Retrieve info");
 
-                accountSittings editSittings = new accountSittings();
-                editSittings.getAccountData(userText, pwdText);
             }
             else {
                 JOptionPane.showMessageDialog(this,"Username/password is incorrect, please try again");
