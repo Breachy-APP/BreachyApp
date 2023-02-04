@@ -99,7 +99,7 @@ public class InitialPage extends JFrame implements ActionListener {
         }
 
         if(ChangeColor.isSelected()){
-            color=new Color(93, 93, 112);
+            color = new Color(93, 93, 112);
             initPageContainer.setBackground(color);
             rememberMe.setBackground(color);
             ChangeColor.setText("Dark Theme");

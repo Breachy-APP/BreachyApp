@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 public class LoginFrame extends JFrame implements ActionListener {
 
     Container container = getContentPane();
+    JLabel pageLabel = new JLabel("Login into breachy");
     JLabel userLabel = new JLabel("USERNAME");
     JLabel passwordLabel = new JLabel("PASSWORD");
     JTextField userTextField = new JTextField();
@@ -32,23 +33,45 @@ public class LoginFrame extends JFrame implements ActionListener {
     }
 
     public void setLocationAndSize() {
+
+        //page label attributes!
+        pageLabel.setBounds(100,30,250,45);
+        pageLabel.setFont(new Font("Calibre", Font.BOLD, 16));
+        pageLabel.setForeground(Color.white);
+        //page label attributes!
+
+        //user label attributes!
         userLabel.setBounds(50, 150, 100, 30);
         userLabel.setForeground(Color.white);
+        //user label attributes!
+
+        //password label attributes!
         passwordLabel.setBounds(50, 220, 100, 30);
         passwordLabel.setForeground(Color.white);
+        //password label attributes!
+
+        //Fields attributes!
         userTextField.setBounds(150, 150, 150, 30);
         passwordField.setBounds(150, 220, 150, 30);
+        //Fields attributes!
+
+        //Show password attributes!
         showPassword.setBounds(150, 250, 150, 30);
         showPassword.setBackground(InitialPage.color);
         showPassword.setForeground(Color.white);
+        //Show password attributes!
+
+        //Buttons attributes!
         loginButton.setBounds(50, 300, 100, 30);
         resetButton.setBounds(200, 300, 100, 30);
         returnButton.setBounds(120,400,100,30);
+        //Buttons attributes!
 
     }
 
     public void addComponentsToContainer() {
 
+        container.add(pageLabel);
         container.add(userLabel);
         container.add(passwordLabel);
         container.add(userTextField);

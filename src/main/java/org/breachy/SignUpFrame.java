@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class SignUpFrame extends JFrame implements ActionListener {
 
     Container singUpContainer = getContentPane();
+    JLabel pageLabel = new JLabel("Signup to breachy");
     JLabel userLabel = new JLabel("USERNAME");
     JLabel eMailLabel = new JLabel("EMAIL");
     JLabel createPasswordLabel = new JLabel("Create Password");
@@ -36,16 +37,19 @@ public class SignUpFrame extends JFrame implements ActionListener {
 
     public void setLocation() {
         // Label's Locations
+        pageLabel.setBounds(100, 10,150, 30);
         userLabel.setBounds(50, 50, 100, 30);
         eMailLabel.setBounds(50, 100, 100, 30);
         createPasswordLabel.setBounds(50, 150, 100, 30);
         confirmPasswordLabel.setBounds(50, 200, 100, 30);
         //label colors
+        pageLabel.setForeground(Color.white);
         userLabel.setForeground(Color.white);
         eMailLabel.setForeground(Color.white);
         createPasswordLabel.setForeground(Color.white);
         confirmPasswordLabel.setForeground(Color.white);
-
+        //Label's Fonts
+        pageLabel.setFont(new Font("Calibre", Font.BOLD, 16));
         // Field's Locations
         userTextField.setBounds(160, 50, 150, 30);
         emailField.setBounds(160, 100, 150, 30);
@@ -64,6 +68,7 @@ public class SignUpFrame extends JFrame implements ActionListener {
 
     public void addComponentsToContainer() {
         //Labels
+        singUpContainer.add(pageLabel);
         singUpContainer.add(userLabel);
         singUpContainer.add(eMailLabel);
         singUpContainer.add(createPasswordLabel);
@@ -73,15 +78,15 @@ public class SignUpFrame extends JFrame implements ActionListener {
         singUpContainer.add(confirmPasswordField);
         singUpContainer.add(userTextField);
         singUpContainer.add(emailField);
-        // checks
+        //Checks
         singUpContainer.add(showPassword);
         singUpContainer.add(agreement);
-        //buttons
+        //Buttons
         singUpContainer.add(signUpButton);
         singUpContainer.add(resetButton);
         singUpContainer.add(returnButton);
 
-        //bg
+        //Backgrounds
         agreement.setBackground(InitialPage.color);
         showPassword.setBackground(InitialPage.color);
         singUpContainer.setBackground(InitialPage.color);
