@@ -11,8 +11,8 @@ public class InitialPage extends JFrame implements ActionListener {
     JButton signUPButton = new JButton("SIGN UP");
     JButton logInButton = new JButton("LOG IN");
     JCheckBox rememberMe = new JCheckBox("REMEMBER ME");
-    JToggleButton ChangeColor = new JToggleButton("Dark Theme");
-    public static Color color=new Color(160,160,170);
+    JToggleButton ChangeColor = new JToggleButton("Light Theme");
+    public static Color color=new Color(40,40,40);
 
     InitialPage(){
         setLayoutManager();
@@ -99,15 +99,15 @@ public class InitialPage extends JFrame implements ActionListener {
         }
 
         if(ChangeColor.isSelected()){
-            color = new Color(40,40,40);
-            initPageContainer.setBackground(color);
-            rememberMe.setBackground(color);
-            ChangeColor.setText("Light Theme");
-        }else{
             color=new Color(93, 93, 112);
             initPageContainer.setBackground(color);
             rememberMe.setBackground(color);
             ChangeColor.setText("Dark Theme");
+        }else{
+            color = new Color(40,40,40);
+            initPageContainer.setBackground(color);
+            rememberMe.setBackground(color);
+            ChangeColor.setText("Light theme");
         }
     }
 
