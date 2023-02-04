@@ -92,7 +92,7 @@ public class DBActions {
 
                     accountSittings sittings = new accountSittings();
                     sittings.openSittingsPage(sittings,false);
-                    sittings.getAccountData(accountData);
+                    sittings.setAccountData(accountData);
                 }
 
             }
@@ -200,15 +200,65 @@ public class DBActions {
         return result;
     }
 
-    public void updateAccount(){
+    public void updateAccount(String data){
+
+        try{
+
+        System.out.println(data);
+        String[] sData = new String[4];
+
+        for (int i = 0; i < sData.length; i++) {
+            if(sData[i] == null){
+                data = retrieveAccountInfo(this.username, this.password);
+
+            }
+            else{
+                sData = data.split(" : ");
+            }
+        }
+            accountSittings u = new accountSittings();
+            String uu = u.UB.getText();
+            System.out.println(data);
+            System.out.println(uu);
+            Connection dbConnection = DBConnection.getInstance().getConnection();
+            PreparedStatement updateStmt = dbConnection.prepareStatement("update accounts set username = ? where username = ?;");
+            updateStmt.setString(1, sData[0]);
+            updateStmt.setString(2,this.username);
+            //updateStmt.setString(2,sData[1]);
+            //updateStmt.setString(3,sData[2]);
+            //updateStmt.setString(4,sData[3]);
+            int rows = updateStmt.executeUpdate();
+
+            System.out.println("Rows Updates: " + rows);
+            System.out.println("Account is Updates Successfully");
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
         //todo
 
     }
-    public void deleteAccount(){
-        //todo  needs a GUI DELETE Button
+    public void deleteAccount(String dUsername){
+
         try {
             Connection dbConnection = DBConnection.getInstance().getConnection();
+            PreparedStatement deleteStmt = dbConnection.prepareStatement("Delete from accounts where username = ?;");
+            deleteStmt.setString(1, dUsername);
+            int rows = deleteStmt.executeUpdate();
 
+            System.out.println("Rows Deleted: " + rows);
+            if (rows >= 0 ) {
+
+                InitialPage newProcess = new InitialPage();
+                newProcess.openIntialPage(newProcess, true);
+                System.out.println("Account is Deleted Successfully");
+
+            }
+            else{
+                System.out.println("No Accoounts were found");
+            }
         }
         catch (SQLException e){
             e.printStackTrace();

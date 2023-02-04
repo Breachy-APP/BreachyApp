@@ -26,8 +26,12 @@ public class mainPageFrame extends JFrame implements ActionListener {
     JToggleButton ChangeColor = new JToggleButton("Dark Theme");
 
 
+    String allAccountData;
     String accountUsername;
     String accountPassword;
+    String accountEmail;
+    String accountStatus;
+
 
     mainPageFrame() {
         setLayoutManager();
@@ -185,7 +189,19 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
             this.toFront();
             setVisible(false);
+
+            String [] allDataArr = allAccountData.split(" : ");
+            for (int i = 0; i < allDataArr.length; i++) {
+                System.out.println(allDataArr[i]);
+            }
+
+
             accountSittings sittings = new accountSittings();
+            sittings.setUsername(allDataArr[0]);
+            sittings.setPassword(allDataArr[1]);
+            sittings.setEmail(allDataArr[2]);
+            sittings.setStatus(allDataArr[3]);
+
             sittings.openSittingsPage(sittings, true);
 
         }

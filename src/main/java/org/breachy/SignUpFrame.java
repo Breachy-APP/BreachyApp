@@ -143,12 +143,16 @@ public class SignUpFrame extends JFrame implements ActionListener {
                         System.out.println("Inserting... !");
                         newAccount.insertAccount();
                     }
+
                     JOptionPane.showMessageDialog(this, "Welcome to our amazing app");
-                    // todo open app page
+
                     this.toFront();
                     setVisible(false);
-                    mainPageFrame mainFrame2 = new mainPageFrame();
-                    mainFrame2.openMainPage(mainFrame2, true);
+                    String accData =  newAccount.retrieveAccountInfo(userNameText, passwordText);
+                    mainPageFrame mainFrame = new mainPageFrame();
+                    mainFrame.allAccountData = newAccount.retrieveAccountInfo(userNameText,passwordText);
+                    mainFrame.openMainPage(mainFrame, true);
+                    System.out.println("Retrieve info");
                 }
         }
         if (e.getSource() == returnButton){

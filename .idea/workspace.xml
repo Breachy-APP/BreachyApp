@@ -6,13 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6ce3be00-e642-43f1-8d0a-35edfe1fcecd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/InitialPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/InitialPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/DBActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/DBActions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/LoginFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/SignUpFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/SignUpFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/accountSittings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/accountSittings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/mainPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/mainPageFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/tipsPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/tipsPageFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +64,11 @@
       <recent name="org.example" />
       <recent name="" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="JLabel" />
+    </option>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">

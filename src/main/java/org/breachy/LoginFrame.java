@@ -82,12 +82,14 @@ public class LoginFrame extends JFrame implements ActionListener {
             // add DB select
             //todo
             DBActions accessAccount = new DBActions(userText, pwdText);
+
             if(accessAccount.authorizeAccountAccess(userText, pwdText)){
+
                 this.toFront();
                 setVisible(false);
+                String accData =  accessAccount.retrieveAccountInfo(userText, pwdText);
                 mainPageFrame mainFrame = new mainPageFrame();
-                mainFrame.accountUsername = userText;
-                mainFrame.accountPassword = pwdText;
+                mainFrame.allAccountData = accessAccount.retrieveAccountInfo(userText,pwdText);
                 mainFrame.openMainPage(mainFrame, true);
                 System.out.println("Retrieve info");
 

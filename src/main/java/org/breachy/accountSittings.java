@@ -52,22 +52,20 @@ public class accountSittings extends JFrame implements ActionListener {
     JLabel passwordLabel = new JLabel("PASSWORD");
     JLabel emailLabel = new JLabel("EMAIL");
     JLabel statusLabel = new JLabel("Account Status");
-
-
     Icon editIcon = new ImageIcon("Edit_Icon3.jpg");
-
     JButton UB = new JButton(editIcon);
     JButton PB = new JButton(editIcon);
     JButton EB = new JButton(editIcon);
     JButton SB = new JButton(editIcon);
 
-    JTextField usernameCField = new JTextField(getUsername());
-    JTextField passwordCField = new JTextField(getPassword());
-    JTextField emailCField = new JTextField(getEmail());
-    JTextField statusCField = new JTextField(getStatus());
-
-
+    JTextField usernameCField = new JTextField();
+    JTextField passwordCField = new JTextField();
+    JTextField emailCField = new JTextField();
+    JTextField statusCField = new JTextField();
+    JButton editData = new JButton("Edit Data");
     JButton returnB = new JButton("Return");
+    JButton deleteAccount = new JButton("Delete Account");
+
 
     accountSittings() {
 
@@ -106,7 +104,9 @@ public class accountSittings extends JFrame implements ActionListener {
         EB.setBounds(270,90,30,20);
         SB.setBounds(270,120,30,20);
 
-        returnB.setBounds(120,400,100,30);
+        editData.setBounds(120,250,120,30);
+        returnB.setBounds(120,300,120,30);
+        deleteAccount.setBounds(120,350,120,30);
 
         usernameCField.setBounds(120,30,120,20);
         passwordCField.setBounds(120,60,120,20);
@@ -127,14 +127,17 @@ public class accountSittings extends JFrame implements ActionListener {
         sittingsContainer.add(EB);
         sittingsContainer.add(SB);
 
-        sittingsContainer.add(returnB);
-
         sittingsContainer.setBackground(InitialPage.color);
 
         sittingsContainer.add(usernameCField);
         sittingsContainer.add(passwordCField);
         sittingsContainer.add(emailCField);
         sittingsContainer.add(statusCField);
+
+        sittingsContainer.add(editData);
+        sittingsContainer.add(returnB);
+        sittingsContainer.add(deleteAccount);
+
 
     }
 
@@ -145,19 +148,16 @@ public class accountSittings extends JFrame implements ActionListener {
         EB.addActionListener(this);
         SB.addActionListener(this);
 
+        editData.addActionListener(this);
         returnB.addActionListener(this);
+        deleteAccount.addActionListener(this);
 
     }
-    public void getAccountData(String accountSittingsData) {
+    public void setAccountData(String accountSittingsData) {
 
         String [] DBAD = new String[4];
         DBAD = accountSittingsData.split(" : ");
         System.out.println("sheeeeees "+accountSittingsData);
-
-        setUsername(DBAD[0]);
-        setPassword(DBAD[1]);
-        setEmail(DBAD[2]);
-        setStatus(DBAD[3]);
 
     }
 
@@ -172,7 +172,16 @@ public class accountSittings extends JFrame implements ActionListener {
             mainPage.openMainPage(mainPage, true);
 
         }
+        if (e.getSource() == editData){
+            DBActions editData = new DBActions();
+
+            System.out.println(usernameCField.getText());
+            editData.updateAccount(usernameCField.getText() +" : "+passwordCField.getText()+" : "+emailCField.getText()+" : "+statusCField.getText());
+
+        }
+
         if (e.getSource() == UB){
+
             JOptionPane.showInputDialog("Username",getUsername());
         }
         if (e.getSource() == PB){
@@ -181,8 +190,14 @@ public class accountSittings extends JFrame implements ActionListener {
         if (e.getSource() == EB){
             JOptionPane.showInputDialog("Enter new Email", getEmail());
         }
-        if (e.getSource() == EB){
-            JOptionPane.showInputDialog("Enter new Email", getStatus());
+        if (e.getSource() == SB){
+            JOptionPane.showInputDialog("Enter new Status", getStatus());
+        }
+        if (e.getSource() == deleteAccount){
+            DBActions deleteAcc = new DBActions();
+            String dUsername = getUsername();
+            System.out.println(dUsername+ " <<< This account will be deleted");
+            deleteAcc.deleteAccount(dUsername);
         }
     }
 }
