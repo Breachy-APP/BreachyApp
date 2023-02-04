@@ -7,6 +7,7 @@ public class Main {
 
         // Init page to open either sign Up or Login page
         InitialPage initFrame = new InitialPage();
-        initFrame.openIntialPage(initFrame, true);
+       initFrame.openIntialPage(initFrame, true);
+
     }
 }
