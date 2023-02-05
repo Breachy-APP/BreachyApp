@@ -1,15 +1,32 @@
 package org.breachy;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.hc.core5.net.URIBuilder;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.Scanner;
 
 public class mainPageFrame extends JFrame implements ActionListener {
+    private final static String API_Report = "https://www.virustotal.com/vtapi/v2/file/report?";
+    private final static String API_Scan = "https://www.virustotal.com/vtapi/v2/file/scan";
+    public static File file;
+    public static Scanner input = new Scanner(System.in);
 
     Container mainPageContainer = getContentPane();
     JLabel searchLabel = new JLabel("Search");
-    JTextField searchField = new JTextField();
+    static JTextField searchField = new JTextField();
     JButton searchButton = new JButton("Search");
     JCheckBoxMenuItem searchByID = new JCheckBoxMenuItem("Search By ID");
     JCheckBoxMenuItem searchBySystem = new JCheckBoxMenuItem("Search by System");
@@ -24,6 +41,8 @@ public class mainPageFrame extends JFrame implements ActionListener {
     JButton accountSittings = new JButton("Account Settings");
 
     JToggleButton ChangeColor = new JToggleButton("Dark Theme");
+    JButton virusButton = new JButton("Virus File Scan");
+    JButton hashCheckButton = new JButton("Hash/ID Check");
 
 
     String allAccountData;
@@ -31,6 +50,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
     String accountPassword;
     String accountEmail;
     String accountStatus;
+    static String hashID;
 
 
     mainPageFrame() {
@@ -72,6 +92,8 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
 
         tipsButton.setBounds(10, 49, 100, 30);
+        virusButton.setBounds(100, 310, 150, 30);
+        hashCheckButton.setBounds(100, 350, 150, 30);
 
         ChangeColor.setBounds(220, 49, 105, 30);
 
@@ -102,6 +124,8 @@ public class mainPageFrame extends JFrame implements ActionListener {
         mainPageContainer.add(tipsButton);
         mainPageContainer.setBackground(InitialPage.color);
         mainPageContainer.add(ChangeColor);
+        mainPageContainer.add(virusButton);
+        mainPageContainer.add(hashCheckButton);
 
     }
 
@@ -116,6 +140,8 @@ public class mainPageFrame extends JFrame implements ActionListener {
         searchByKeyWord.addActionListener(this);
         tipsButton.addActionListener(this);
         ChangeColor.addActionListener(this);
+        virusButton.addActionListener(this);
+        hashCheckButton.addActionListener(this);
     }
 
     public void setLayoutManager() {
@@ -190,7 +216,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
             this.toFront();
             setVisible(false);
 
-            String [] allDataArr = allAccountData.split(" : ");
+            String[] allDataArr = allAccountData.split(" : ");
             for (int i = 0; i < allDataArr.length; i++) {
                 System.out.println(allDataArr[i]);
             }
@@ -222,5 +248,111 @@ public class mainPageFrame extends JFrame implements ActionListener {
             searchByKeyWord.setBackground(InitialPage.color);
             ChangeColor.setText("Dark Theme");
         }
+
+        if (e.getSource() == virusButton) {
+            try {
+                VirusScan();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
+
+        }
+        if (e.getSource() == hashCheckButton) {
+            VirusReport();
+        }
+    }
+
+    public static void VirusScan() throws IOException, InterruptedException {
+
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(".")); //sets current directory
+
+        int r = fileChooser.showOpenDialog(null); //select file to open
+        if (r == JFileChooser.APPROVE_OPTION) {
+            file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+        } else if (r == JFileChooser.CANCEL_OPTION)
+            return;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(API_Scan))
+                .header("accept", "text/plain")
+                .header("content-type", "application/x-www-form-urlencoded")
+                .method("POST", HttpRequest.BodyPublishers.ofString("apikey=781dc33df7ae27f765cf69c4f0f6c87cc159a5260fdf2c132a5eada8dc229fac&file=" + file))
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        if (response != null) {
+            //System.out.println(response.body());
+            ScanInfo sInfo = parseVirusScanResponse(response.body(), ScanInfo.class);
+            JOptionPane.showMessageDialog(null, sInfo);
+        }
+
+    }
+
+    public static ScanInfo parseVirusScanResponse(String responseString, Class<?> elementClass) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            JsonNode ScanInfoNode = objectMapper.readTree(responseString);
+            ScanInfo sInfo = new ScanInfo();
+            String verbose_msg = ScanInfoNode.get("verbose_msg").toString();
+            String permalink = ScanInfoNode.get("permalink").toString();
+            String scan_id = ScanInfoNode.get("scan_id").toString();
+
+            sInfo.setScan_id(scan_id);
+            sInfo.setVerbose_msg(verbose_msg);
+            sInfo.setPermalink(permalink);
+
+            return sInfo;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        } catch (Exception e) {
+            System.out.println("Error");
+            return null;
+        }
+
+    }
+
+    public static void VirusReport() {
+        URIBuilder uriBuilder = null;
+        hashID = searchField.getText();
+        try {
+            uriBuilder = new URIBuilder(API_Report);
+            uriBuilder.addParameter("apikey", System.getenv("API_KEY"));
+            uriBuilder.addParameter("resource", hashID);
+            uriBuilder.addParameter("allinfo", "false");
+            URI uri = uriBuilder.build();
+            HttpResponse<String> response = httpAPI.sendGet(uri);
+            if (response != null) {
+                //System.out.println(response.body());
+                VirusInfo vInfo = parseVirusResponse(response.body(), VirusInfo.class);
+                JOptionPane.showMessageDialog(null, vInfo);
+            }
+
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Enter SCAN ID OR FILE HASH !");
+        }
+
+    }
+
+    private static VirusInfo parseVirusResponse(String responseString, Class<?> elementClass) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            JsonNode VirusInfoNode = objectMapper.readTree(responseString);
+            VirusInfo vInfo = new VirusInfo();
+            String detected = VirusInfoNode.get("scans").get("McAfee").get("detected").toString();
+            String result = VirusInfoNode.get("scans").get("McAfee").get("result").toString();
+
+            vInfo.setDetected(detected);
+            vInfo.setResult(result);
+
+            return vInfo;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 }
