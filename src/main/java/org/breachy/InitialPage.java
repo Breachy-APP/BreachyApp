@@ -11,8 +11,10 @@ public class InitialPage extends JFrame implements ActionListener {
     JButton signUPButton = new JButton("SIGN UP");
     JButton logInButton = new JButton("LOG IN");
     JCheckBox rememberMe = new JCheckBox("REMEMBER ME");
-    JToggleButton ChangeColor = new JToggleButton("Dark Theme");
-    public static Color color=new Color(160,160,170);
+    JToggleButton ChangeColor = new JToggleButton("Dark Mode");
+    public static Color color=new Color(93, 93, 112);
+
+    JButton Guest = new JButton("Continue without Login");
 
     InitialPage(){
         setLayoutManager();
@@ -61,6 +63,7 @@ public class InitialPage extends JFrame implements ActionListener {
         rememberMe.setFont(new Font("Calibre", Font.ITALIC, 12));
         rememberMe.setForeground(Color.white);
         ChangeColor.setBounds(107,300,130,30);
+        Guest.setBounds(82,230,180,30);
     }
     public void addComponentsToContainer(){
 
@@ -72,6 +75,7 @@ public class InitialPage extends JFrame implements ActionListener {
         rememberMe.setBackground(color);
         initPageContainer.setBackground(color);
         initPageContainer.add(ChangeColor);
+        initPageContainer.add(Guest);
 
 
     }
@@ -81,6 +85,7 @@ public class InitialPage extends JFrame implements ActionListener {
         logInButton.addActionListener(this);
         rememberMe.addActionListener(this);
         ChangeColor.addActionListener(this);
+        Guest.addActionListener(this);
     }
 
     @Override
@@ -102,12 +107,20 @@ public class InitialPage extends JFrame implements ActionListener {
             color = new Color(40,40,40);
             initPageContainer.setBackground(color);
             rememberMe.setBackground(color);
-            ChangeColor.setText("Light Theme");
+            ChangeColor.setText("Light Mode");
         }else{
             color=new Color(93, 93, 112);
             initPageContainer.setBackground(color);
             rememberMe.setBackground(color);
-            ChangeColor.setText("Dark Theme");
+            ChangeColor.setText("Dark Mode");
+        }
+
+        if(e.getSource() == Guest){
+            this.toFront();
+            setVisible(false);
+            mainPageFrame mainFrame = new mainPageFrame();
+            mainFrame.openMainPage(mainFrame,true);
+
         }
     }
 

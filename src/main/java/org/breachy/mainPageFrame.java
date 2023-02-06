@@ -40,7 +40,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
     JButton accountSittings = new JButton("Account Settings");
 
-    JToggleButton ChangeColor = new JToggleButton("Dark Theme");
+    JToggleButton ChangeColor = new JToggleButton("Dark Mode");
     JButton virusButton = new JButton("Virus File Scan");
     JButton hashCheckButton = new JButton("Hash/ID Check");
 
@@ -85,7 +85,10 @@ public class mainPageFrame extends JFrame implements ActionListener {
         searchByKeyWord.setForeground(Color.white);
         searchByKeyWord.setBackground(InitialPage.color);
 
-        logOutButton.setBounds(200, 400, 100, 30);
+        if(allAccountData != null){logOutButton.setBounds(200, 400, 100, 30);}
+        else {logOutButton.setBounds(125, 400, 100, 30);
+        logOutButton.setText("Return");}
+
         accountSittings.setBounds(30, 400, 150, 30);
 
         menuBar.setBounds(500, 500, 300, 30);
@@ -119,7 +122,8 @@ public class mainPageFrame extends JFrame implements ActionListener {
         mainPageContainer.add(searchByVersion);
         mainPageContainer.add(searchByKeyWord);
         mainPageContainer.add(logOutButton);
-        mainPageContainer.add(accountSittings);
+        if(allAccountData!=null){
+        mainPageContainer.add(accountSittings);}
         mainPageContainer.add(menuBar);//todo
         mainPageContainer.add(tipsButton);
         mainPageContainer.setBackground(InitialPage.color);
@@ -238,15 +242,15 @@ public class mainPageFrame extends JFrame implements ActionListener {
             searchBySystem.setBackground(InitialPage.color);
             searchByVersion.setBackground(InitialPage.color);
             searchByKeyWord.setBackground(InitialPage.color);
-            ChangeColor.setText("Light Theme");
+            ChangeColor.setText("Light Mode");
         } else {
-            InitialPage.color = new Color(160, 160, 170);
+            InitialPage.color = new Color(93, 93, 112);
             mainPageContainer.setBackground(InitialPage.color);
             searchByID.setBackground(InitialPage.color);
             searchBySystem.setBackground(InitialPage.color);
             searchByVersion.setBackground(InitialPage.color);
             searchByKeyWord.setBackground(InitialPage.color);
-            ChangeColor.setText("Dark Theme");
+            ChangeColor.setText("Dark Mode");
         }
 
         if (e.getSource() == virusButton) {
@@ -308,6 +312,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
             return null;
         } catch (Exception e) {
             System.out.println("Error");
+            System.out.println(e);
             return null;
         }
 
