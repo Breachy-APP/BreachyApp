@@ -157,7 +157,7 @@ public class accountSittings extends JFrame implements ActionListener {
 
         String [] DBAD = new String[4];
         DBAD = accountSittingsData.split(" : ");
-        System.out.println("sheeeeees "+accountSittingsData);
+
 
     }
 

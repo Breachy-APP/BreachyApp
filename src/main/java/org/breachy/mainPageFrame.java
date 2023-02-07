@@ -33,17 +33,12 @@ public class mainPageFrame extends JFrame implements ActionListener {
     JCheckBoxMenuItem searchByVersion = new JCheckBoxMenuItem("Search By Version");
     JCheckBoxMenuItem searchByKeyWord = new JCheckBoxMenuItem("General Search");
     JButton logOutButton = new JButton("LOGOUT");
-    JMenuBar menuBar = new JMenuBar(); //todo
-    JMenuItem x = new JMenuItem("X"); // todo
     //tips page button
     JButton tipsButton = new JButton("TIPS");
-
     JButton accountSittings = new JButton("Account Settings");
-
     JToggleButton ChangeColor = new JToggleButton("Dark Mode");
     JButton virusButton = new JButton("Virus File Scan");
     JButton hashCheckButton = new JButton("Hash/ID Check");
-
 
     String allAccountData;
     String accountUsername;
@@ -89,14 +84,9 @@ public class mainPageFrame extends JFrame implements ActionListener {
         logOutButton.setText("Return");}
 
         accountSittings.setBounds(30, 400, 150, 30);
-
-        menuBar.setBounds(500, 500, 300, 30);
-
-
         tipsButton.setBounds(10, 49, 100, 30);
         virusButton.setBounds(100, 310, 150, 30);
         hashCheckButton.setBounds(100, 350, 150, 30);
-
         ChangeColor.setBounds(220, 49, 105, 30);
 
     }
@@ -121,9 +111,10 @@ public class mainPageFrame extends JFrame implements ActionListener {
         mainPageContainer.add(searchByVersion);
         mainPageContainer.add(searchByKeyWord);
         mainPageContainer.add(logOutButton);
+
         if(allAccountData!=null){
         mainPageContainer.add(accountSittings);}
-        mainPageContainer.add(menuBar);//todo
+
         mainPageContainer.add(tipsButton);
         mainPageContainer.setBackground(InitialPage.color);
         mainPageContainer.add(ChangeColor);
@@ -195,8 +186,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
                 System.out.println("final result " + theBreach);
                 JOptionPane.showMessageDialog(this, theBreach);
             }
-
-
+            
         }
         if (e.getSource() == logOutButton) {
 
@@ -223,7 +213,6 @@ public class mainPageFrame extends JFrame implements ActionListener {
             for (int i = 0; i < allDataArr.length; i++) {
                 System.out.println(allDataArr[i]);
             }
-
 
             accountSittings sittings = new accountSittings();
             sittings.setUsername(allDataArr[0]);
@@ -328,7 +317,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
             URI uri = uriBuilder.build();
             HttpResponse<String> response = httpAPI.sendGet(uri);
             if (response != null) {
-                //System.out.println(response.body());
+
                 VirusInfo vInfo = parseVirusResponse(response.body(), VirusInfo.class);
                 JOptionPane.showMessageDialog(null, vInfo);
             }
@@ -357,6 +346,5 @@ public class mainPageFrame extends JFrame implements ActionListener {
             e.printStackTrace();
             return null;
         }
-
     }
 }

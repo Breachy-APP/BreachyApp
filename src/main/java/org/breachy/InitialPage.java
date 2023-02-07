@@ -67,7 +67,6 @@ public class InitialPage extends JFrame implements ActionListener {
     }
     public void addComponentsToContainer(){
 
-
         initPageContainer.add(welcomeLabel);
         initPageContainer.add(signUPButton);
         initPageContainer.add(logInButton);
@@ -76,7 +75,6 @@ public class InitialPage extends JFrame implements ActionListener {
         initPageContainer.setBackground(color);
         initPageContainer.add(ChangeColor);
         initPageContainer.add(Guest);
-
 
     }
     public void addActionEvent(){
@@ -123,6 +121,5 @@ public class InitialPage extends JFrame implements ActionListener {
 
         }
     }
-
-    }
+}
 
