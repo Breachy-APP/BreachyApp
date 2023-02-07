@@ -198,7 +198,7 @@ public class accountSittings extends JFrame implements ActionListener {
             String dUsername = getUsername();
             System.out.println(dUsername+ " <<< This account will be deleted");
             deleteAcc.deleteAccount(dUsername);
-            
+
         }
     }
 }

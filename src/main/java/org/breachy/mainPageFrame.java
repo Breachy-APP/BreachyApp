@@ -60,7 +60,6 @@ public class mainPageFrame extends JFrame implements ActionListener {
         addActionEvent();
     }
 
-
     public void setLocationAndSize() {
 
         searchLabel.setBounds(13, 15, 100, 30);
