@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="6ce3be00-e642-43f1-8d0a-35edfe1fcecd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/accountSittings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/accountSittings.java" afterDir="false" />
+=======
+    <list default="true" id="abbbd0c2-293b-4b33-b293-c3f4285a0a8f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/InitialPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/InitialPage.java" afterDir="false" />
+>>>>>>> 615512d9c07d0bb60e339de7d581a58bf452e2b4
       <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/mainPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/mainPageFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +60,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "269",
     "last_directory_selection": "C:/Users/Hamza Helal Dubh/Desktop/6th Semester/SWE-251/Project251/BreachyApp/src/main/java/org/example",
+<<<<<<< HEAD
     "last_opened_file_path": "D:/6th Semester/SWE-251/Project251/BreachyApp",
+=======
+    "last_opened_file_path": "C:/Users/96655/OneDrive/Desktop/my-first-assignment/todo-demo",
+>>>>>>> 615512d9c07d0bb60e339de7d581a58bf452e2b4
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
