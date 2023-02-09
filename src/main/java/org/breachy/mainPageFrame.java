@@ -186,7 +186,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
                 System.out.println("final result " + theBreach);
                 JOptionPane.showMessageDialog(this, theBreach);
             }
-            
+
         }
         if (e.getSource() == logOutButton) {
 
@@ -330,7 +330,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
     }
 
-    private static VirusInfo parseVirusResponse(String responseString, Class<?> elementClass) {
+    public  static VirusInfo parseVirusResponse(String responseString, Class<?> elementClass) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             JsonNode VirusInfoNode = objectMapper.readTree(responseString);
