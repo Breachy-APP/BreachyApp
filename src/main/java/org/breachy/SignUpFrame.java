@@ -1,9 +1,16 @@
 package org.breachy;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.Key;
+import java.security.SecureRandom;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.Base64;
 
 public class SignUpFrame extends JFrame implements ActionListener {
 
@@ -28,7 +35,6 @@ public class SignUpFrame extends JFrame implements ActionListener {
         setLocation();
         addComponentsToContainer();
         addActionEvent();
-
     }
 
     public void setLayoutManager() {
@@ -42,6 +48,7 @@ public class SignUpFrame extends JFrame implements ActionListener {
         eMailLabel.setBounds(50, 100, 100, 30);
         createPasswordLabel.setBounds(50, 150, 100, 30);
         confirmPasswordLabel.setBounds(50, 200, 100, 30);
+
         //label colors
         pageLabel.setForeground(Color.white);
         userLabel.setForeground(Color.white);
@@ -55,6 +62,7 @@ public class SignUpFrame extends JFrame implements ActionListener {
         emailField.setBounds(160, 100, 150, 30);
         createPasswordField.setBounds(160, 150, 150, 30);
         confirmPasswordField.setBounds(160, 200, 150, 30);
+
         // Button's location
         showPassword.setBounds(160, 250, 150, 30);
         showPassword.setForeground(Color.white);
@@ -62,7 +70,7 @@ public class SignUpFrame extends JFrame implements ActionListener {
         agreement.setForeground(Color.white);
         signUpButton.setBounds(50, 350, 100, 30);
         resetButton.setBounds(200, 350, 100, 30);
-        returnButton.setBounds(120,400,100,30);
+        returnButton.setBounds(120, 400, 100, 30);
 
     }
 
@@ -129,80 +137,114 @@ public class SignUpFrame extends JFrame implements ActionListener {
             String passwordText;
             String conPasswordText;
 
+            // Username info
             userNameText = userTextField.getText();
             emailText = emailField.getText();
             // password info
             passwordText = createPasswordField.getText();
             conPasswordText = confirmPasswordField.getText();
 
-            // username and email info
+            // Check if already exists then Insert to DB
+            if (isComplete(userNameText, emailText, passwordText, conPasswordText)) {
 
-
-                // Check if already exists then Insert to DB
-                if (isComplete(userNameText, emailText, passwordText, conPasswordText)) {
-
-                    DBActions newAccount = new DBActions(userNameText, passwordText, emailText);
-                    if (newAccount.alreadyExists(userNameText, passwordText)) {
-                        JOptionPane.showMessageDialog(this, "Account Already Exists try to log in");
-                    } else {
-                        System.out.println("Inserting... !");
-                        newAccount.insertAccount();
-                    }
-
-                    JOptionPane.showMessageDialog(this, "Welcome to our amazing app");
-
-                    this.toFront();
-                    setVisible(false);
-                    String accData =  newAccount.retrieveAccountInfo(userNameText, passwordText);
-                    mainPageFrame mainFrame = new mainPageFrame();
-                    mainFrame.allAccountData = newAccount.retrieveAccountInfo(userNameText,passwordText);
-                    mainFrame.openMainPage(mainFrame, true);
-                    System.out.println("Retrieve info");
+                DBActions newAccount = new DBActions(userNameText, passwordText, emailText);
+                if (newAccount.alreadyExists(userNameText, emailText)) {
+                    JOptionPane.showMessageDialog(this, "Account Already Exists try to log in");
+                } else {
+                    System.out.println("Inserting... !");
+                    encryptPassword(userNameText, passwordText,emailText);
                 }
+
+                JOptionPane.showMessageDialog(this, "Welcome to our amazing app");
+
+                this.toFront();
+                setVisible(false);
+                String accData = newAccount.retrieveAccountInfo(userNameText, passwordText);
+                mainPageFrame mainFrame = new mainPageFrame();
+                mainFrame.allAccountData = newAccount.retrieveAccountInfo(userNameText, passwordText);
+                mainFrame.openMainPage(mainFrame, true);
+                System.out.println("Retrieve info");
+            }
         }
-        if (e.getSource() == returnButton){
+        if (e.getSource() == returnButton) {
 
             this.toBack();
             setVisible(false);
             InitialPage initpage = new InitialPage();
-            initpage.openIntialPage(initpage,true);
+            initpage.openIntialPage(initpage, true);
 
         }
     }
-    public boolean isComplete(String userNameText, String emailText, String passwordText, String conPasswordText){
+
+    public boolean isComplete(String userNameText, String emailText, String passwordText, String conPasswordText) {
 
 
-        if(userTextField != null && emailField != null && createPasswordField != null &&
-                confirmPasswordField != null && agreement.isSelected() && (emailText.endsWith(".com")||emailText.endsWith(".sa"))
-                && emailText.contains("@") && passwordText.equals(conPasswordText)){
+        if (userTextField != null && emailField != null && createPasswordField != null &&
+                confirmPasswordField != null && agreement.isSelected() && (emailText.endsWith(".com") || emailText.endsWith(".sa"))
+                && emailText.contains("@") && passwordText.equals(conPasswordText)) {
 
             return true;
 
-        }
-        else {
+        } else {
 
-            if (userNameText == null)  {
+            if (userNameText == null) {
                 JOptionPane.showMessageDialog(this, "please complete the information");
-            }else if (emailText == null) {
+            } else if (emailText == null) {
                 JOptionPane.showMessageDialog(this, "please complete the information");
-            }else if (passwordText == null){
+            } else if (passwordText == null) {
                 JOptionPane.showMessageDialog(this, "please complete the information");
             } else if (conPasswordText == null) {
                 JOptionPane.showMessageDialog(this, "please complete the information");
-            } else if (! emailText.contains("@")){
+            } else if (!emailText.contains("@")) {
                 JOptionPane.showMessageDialog(this, "Invalid Email it should contain a host");
-            } else if (! emailText.endsWith(".com") || (! emailText.endsWith(".sa"))) {
+            } else if (!emailText.endsWith(".com") || (!emailText.endsWith(".sa"))) {
                 JOptionPane.showMessageDialog(this, "Invalid Email it should contain a domain");
             } else if (passwordText.equals("") || !passwordText.equals(conPasswordText)) {
                 createPasswordField.setText("");
                 confirmPasswordField.setText("");
                 JOptionPane.showMessageDialog(this, "Password is wrong!");
-            }else if ( ! agreement.isSelected()) {
+            } else if (!agreement.isSelected()) {
                 JOptionPane.showMessageDialog(this, "please agree to out terms to be able to sign up");
             }
             return false;
 
         }
+    }
+
+    public static void encryptPassword(String username, String password, String emailText) {
+        try {
+            // Generate a random encryption key
+            Key encryptionKey = generateEncryptionKey();
+            //Encrypt the password
+            byte[] encryptedPassword = encrypt(password, encryptionKey);
+            // Encode the encrypted password and encryption key into base64 strings
+            String encryptedPasswordBase64 = Base64.getEncoder().encodeToString(encryptedPassword);
+            String encryptionKeyBase64 = Base64.getEncoder().encodeToString(encryptionKey.getEncoded());
+            // Store the encrypted password and encryption key in the database
+            Connection dbConnection = DBConnection.getInstance().getConnection();
+            PreparedStatement pstmt = dbConnection.prepareStatement("INSERT INTO accounts (username, upassword, email, accountstatus, salt) VALUES (?, ?, ?, ?, ?)");
+            pstmt.setString(1, username);
+            pstmt.setString(2, encryptedPasswordBase64);
+            pstmt.setString(3, emailText);
+            pstmt.setString(4,("Active"));
+            pstmt.setString(5,encryptionKeyBase64);
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Key generateEncryptionKey() throws Exception {
+        SecureRandom random = new SecureRandom();
+        byte[] keyBytes = new byte[16];
+        random.nextBytes(keyBytes);
+        return new SecretKeySpec(keyBytes, "AES");
+    }
+
+    private static byte[] encrypt(String data, Key encryptionKey) throws Exception {
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, encryptionKey);
+        return cipher.doFinal(data.getBytes());
     }
 }
 

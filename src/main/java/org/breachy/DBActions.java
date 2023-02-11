@@ -1,17 +1,22 @@
 package org.breachy;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import java.sql.*;
+import java.util.Base64;
 
 public class DBActions {
     private String username;
     private String password;
     private String Email;
-    private String accountStatus;
+    public static String accountStatus;
 
     public DBActions(){
 
-        String username = this.username;
-        String password = this.password;
+        String username = null;
+        String password = null;
+        String Email = null;
+        String accountStatus = null;
 
     }
     public DBActions(String username, String password, String Email){
@@ -131,9 +136,6 @@ public class DBActions {
                     setAccountStatus(this.accountStatus);
                     st = getAccountStatus();
                     System.out.println(u + "Checking " + p + " ");
-
-                    System.out.println("siuuuuuuuuuuuuuuu " + retrieveAccountInfo(u,p));
-
                     isAuth = true;
 
                 }
@@ -150,11 +152,11 @@ public class DBActions {
         try {
             Connection dbConnection = DBConnection.getInstance().getConnection();
             Statement stmt = dbConnection.createStatement();
-            String query = "select username, upassword from accounts;";
+            String query = "select username, email from accounts;";
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()){
-                if(rs.getString("username").equals(this.username) && rs.getString("upassword").equals(this.password)){
+                if(rs.getString("username").equals(this.username) && rs.getString("email").equals(this.Email)){
                     exists = true;
                 }
                 else{
@@ -183,16 +185,11 @@ public class DBActions {
             while(rs.next()){
                 if (rs.getString("breachSystem").equalsIgnoreCase(req)){
                     result = rs.getString("breachDescription");
-
-
                 }
                 else{
                     result = "No Matches";
-
                 }
-
             }
-
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -224,21 +221,20 @@ public class DBActions {
             PreparedStatement updateStmt = dbConnection.prepareStatement("update accounts set username = ? where username = ?;");
             updateStmt.setString(1, sData[0]);
             updateStmt.setString(2,this.username);
-            //updateStmt.setString(2,sData[1]);
-            //updateStmt.setString(3,sData[2]);
-            //updateStmt.setString(4,sData[3]);
+
             int rows = updateStmt.executeUpdate();
 
             System.out.println("Rows Updates: " + rows);
-            System.out.println("Account is Updates Successfully");
+            if (rows > 0){
+                System.out.println("Account is Updates Successfully");
+            }
+            else{
+                System.out.println("Nothing is Updated");
+            }
 
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
-        //todo
-
     }
     public void deleteAccount(String dUsername){
 
@@ -257,12 +253,42 @@ public class DBActions {
 
             }
             else{
-                System.out.println("No Accoounts were found");
+                System.out.println("No Accounts were found");
             }
         }
         catch (SQLException e){
             e.printStackTrace();
         }
+    }
+
+    public static boolean checkPassword(String username, String enteredPassword) {
+        try {
+            Connection dbConnection = DBConnection.getInstance().getConnection();
+            Statement stmt = dbConnection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT upassword, salt FROM accounts WHERE username = '" + username + "';");
+            while (rs.next()) {
+                String storedPassword = rs.getString("upassword");
+                String saltString = rs.getString("salt");
+                byte[] salt = Base64.getDecoder().decode(saltString);
+                // Use the salt to generate a secret key
+                SecretKeySpec secretKey = new SecretKeySpec(salt, "AES");
+                Cipher cipher = Cipher.getInstance("AES");
+                cipher.init(Cipher.DECRYPT_MODE, secretKey);
+                byte[] decryptedPassword = cipher.doFinal(Base64.getDecoder().decode(storedPassword));
+                if (enteredPassword.equals(new String(decryptedPassword))) {
+                    System.out.println("true");
+                    return true;
+                } else {
+                    System.out.println("false");
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("error");
+        }
+        System.out.println("false");
+        return false;
     }
 }
 

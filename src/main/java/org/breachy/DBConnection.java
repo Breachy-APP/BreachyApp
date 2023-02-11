@@ -13,19 +13,19 @@ import io.github.cdimascio.dotenv.Dotenv;
         private static org.breachy.DBConnection instance;
 
         // SECRET TODO
-        Dotenv dotenv = Dotenv.load();
-        String DBUsername = dotenv.get("DB_Username");
-        String DBPassword = dotenv.get("DB_Password");
+        //Dotenv dotenv = Dotenv.load();
+        //String DBUsername = dotenv.get("DB_Username");
+       // String DBPassword = dotenv.get("DB_Password");
 
         private DBConnection() throws SQLException {
 
             this.DBName = "BreachyAppDB";
-            this.port = 5432;
-            this.url = "jdbc:postgresql://localhost:" + Integer.toString(this.port) + "/" + this.DBName;
+            this.port = 12729;
+            this.url = "jdbc:postgresql://4.tcp.eu.ngrok.io:" + Integer.toString(this.port) + "/" + this.DBName;
 
             Properties props = new Properties();
-            props.setProperty("user", DBUsername);
-            props.setProperty("password", DBPassword);
+            props.setProperty("user", "postgres");
+            props.setProperty("password", "IVIeeZo_2015");
             props.setProperty("ssl", "false");
 
             this.connection = DriverManager.getConnection(url, props);
@@ -44,5 +44,3 @@ import io.github.cdimascio.dotenv.Dotenv;
             return instance;
         }
     }
-
-

@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static org.breachy.mainPageFrame.breachyLogo;
+
 public class InitialPage extends JFrame implements ActionListener {
 
     Container initPageContainer = getContentPane();
@@ -11,8 +13,13 @@ public class InitialPage extends JFrame implements ActionListener {
     JButton signUPButton = new JButton("SIGN UP");
     JButton logInButton = new JButton("LOG IN");
     JCheckBox rememberMe = new JCheckBox("REMEMBER ME");
+
     JToggleButton ChangeColor = new JToggleButton("Light Theme");
     public static Color color=new Color(40,40,40);
+    JToggleButton ChangeColor = new JToggleButton("Dark Mode");
+    public static Color color=new Color(93, 93, 112);
+    
+    JButton Guest = new JButton("Continue without Login");
 
     InitialPage(){
         setLayoutManager();
@@ -27,6 +34,7 @@ public class InitialPage extends JFrame implements ActionListener {
         initFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         initFrame.setBounds(600, 150, 350, 500);
         initFrame.setResizable(false);
+        initFrame.setIconImage(breachyLogo.getImage());
     }
     public void openLogInForm(boolean c) {
 
@@ -36,6 +44,7 @@ public class InitialPage extends JFrame implements ActionListener {
         logInFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         logInFrame.setBounds(600, 150, 350, 500);
         logInFrame.setResizable(false);
+        logInFrame.setIconImage(breachyLogo.getImage());
 
     }
     public static void openSignInForm(boolean c) {
@@ -46,6 +55,7 @@ public class InitialPage extends JFrame implements ActionListener {
         signUpFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         signUpFrame.setBounds(600, 150, 350, 500);
         signUpFrame.setResizable(false);
+        signUpFrame.setIconImage(breachyLogo.getImage());
 
     }
     public void setLayoutManager(){
@@ -61,9 +71,9 @@ public class InitialPage extends JFrame implements ActionListener {
         rememberMe.setFont(new Font("Calibre", Font.ITALIC, 12));
         rememberMe.setForeground(Color.white);
         ChangeColor.setBounds(107,300,130,30);
+        Guest.setBounds(82,230,180,30);
     }
     public void addComponentsToContainer(){
-
 
         initPageContainer.add(welcomeLabel);
         initPageContainer.add(signUPButton);
@@ -72,7 +82,7 @@ public class InitialPage extends JFrame implements ActionListener {
         rememberMe.setBackground(color);
         initPageContainer.setBackground(color);
         initPageContainer.add(ChangeColor);
-
+        initPageContainer.add(Guest);
 
     }
     public void addActionEvent(){
@@ -81,6 +91,7 @@ public class InitialPage extends JFrame implements ActionListener {
         logInButton.addActionListener(this);
         rememberMe.addActionListener(this);
         ChangeColor.addActionListener(this);
+        Guest.addActionListener(this);
     }
 
     @Override
@@ -102,14 +113,26 @@ public class InitialPage extends JFrame implements ActionListener {
             color = new Color(93, 93, 112);
             initPageContainer.setBackground(color);
             rememberMe.setBackground(color);
+
             ChangeColor.setText("Dark Theme");
+            ChangeColor.setText("Light Mode");
+
         }else{
             color = new Color(40,40,40);
             initPageContainer.setBackground(color);
             rememberMe.setBackground(color);
             ChangeColor.setText("Light theme");
+            ChangeColor.setText("Dark Mode");
+
+        }
+
+        if(e.getSource() == Guest){
+            this.toFront();
+            setVisible(false);
+            mainPageFrame mainFrame = new mainPageFrame();
+            mainFrame.openMainPage(mainFrame,true);
+
         }
     }
-
-    }
+}
 

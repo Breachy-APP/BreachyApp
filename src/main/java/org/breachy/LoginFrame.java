@@ -102,11 +102,10 @@ public class LoginFrame extends JFrame implements ActionListener {
             userText = userTextField.getText();
             pwdText = passwordField.getText();
             System.out.println(userText + " : " +  pwdText + " Logged in Successfully");
-            // add DB select
-            //todo
+
             DBActions accessAccount = new DBActions(userText, pwdText);
 
-            if(accessAccount.authorizeAccountAccess(userText, pwdText)){
+            if(accessAccount.checkPassword(userText,pwdText)){
 
                 this.toFront();
                 setVisible(false);

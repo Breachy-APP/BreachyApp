@@ -13,8 +13,6 @@ public class SearchTool {
     String breachDescription;
     DBActions searching = new DBActions();
     public SearchTool(){
-
-
     }
     public SearchTool(String breachID, String breachSystem, String breachSysVersion, String breachDescription){
 
@@ -140,7 +138,6 @@ public class SearchTool {
         return "";
     }
 
-
     public String search(String req) {
 
         String result = null;
@@ -151,8 +148,10 @@ public class SearchTool {
             Statement Stmt = dbConnection.createStatement();
             String query = "Select * from breaches;";
             ResultSet rs = Stmt.executeQuery(query);
+
             while (rs.next()) {
                 if (rs.getString("breachid").equalsIgnoreCase(req) || rs.getString("breachsystem").equalsIgnoreCase(req) || rs.getString("breachsysversion").equalsIgnoreCase(req) || rs.getString("breachDescription").equalsIgnoreCase(req)) {
+
                     result = rs.getString("breachid") + " : "
                             + rs.getString("breachsystem") + " : "
                             + rs.getString("breachsysversion") + " : "
