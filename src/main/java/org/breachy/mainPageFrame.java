@@ -19,6 +19,7 @@ import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 public class mainPageFrame extends JFrame implements ActionListener {
+    static ImageIcon breachyLogo = new ImageIcon(mainPageFrame.class.getClassLoader().getResource("breachyLogo.jpg"));
     private final static String API_Report = "https://www.virustotal.com/vtapi/v2/file/report?";
     private final static String API_Scan = "https://www.virustotal.com/vtapi/v2/file/scan";
     public static File file;
@@ -33,17 +34,13 @@ public class mainPageFrame extends JFrame implements ActionListener {
     JCheckBoxMenuItem searchByVersion = new JCheckBoxMenuItem("Search By Version");
     JCheckBoxMenuItem searchByKeyWord = new JCheckBoxMenuItem("General Search");
     JButton logOutButton = new JButton("LOGOUT");
-    JMenuBar menuBar = new JMenuBar(); //todo
-    JMenuItem x = new JMenuItem("X"); // todo
     //tips page button
     JButton tipsButton = new JButton("TIPS");
-
     JButton accountSittings = new JButton("Account Settings");
-
-    JToggleButton ChangeColor = new JToggleButton("Dark Theme");
+    JToggleButton ChangeColor = new JToggleButton("Dark Mode");
     JButton virusButton = new JButton("Virus File Scan");
     JButton hashCheckButton = new JButton("Hash/ID Check");
-
+    JButton softwareListsButton = new JButton("OS Types");
 
     String allAccountData;
     String accountUsername;
@@ -84,16 +81,18 @@ public class mainPageFrame extends JFrame implements ActionListener {
         searchByKeyWord.setForeground(Color.white);
         searchByKeyWord.setBackground(InitialPage.color);
 
-        logOutButton.setBounds(200, 400, 100, 30);
+        if (allAccountData != null) {
+            logOutButton.setBounds(200, 400, 100, 30);
+        } else {
+            logOutButton.setBounds(125, 400, 100, 30);
+            logOutButton.setText("Return");
+        }
+
         accountSittings.setBounds(30, 400, 150, 30);
-
-        menuBar.setBounds(500, 500, 300, 30);
-
-
         tipsButton.setBounds(10, 49, 100, 30);
         virusButton.setBounds(100, 310, 150, 30);
         hashCheckButton.setBounds(100, 350, 150, 30);
-
+        softwareListsButton.setBounds(100, 270, 150, 30);
         ChangeColor.setBounds(220, 49, 105, 30);
 
     }
@@ -105,6 +104,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
         mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         mainFrame.setBounds(600, 150, 350, 500);
         mainFrame.setResizable(false);
+        mainFrame.setIconImage(breachyLogo.getImage());
 
     }
 
@@ -118,13 +118,17 @@ public class mainPageFrame extends JFrame implements ActionListener {
         mainPageContainer.add(searchByVersion);
         mainPageContainer.add(searchByKeyWord);
         mainPageContainer.add(logOutButton);
-        mainPageContainer.add(accountSittings);
-        mainPageContainer.add(menuBar);//todo
+
+        if (allAccountData != null) {
+            mainPageContainer.add(accountSittings);
+        }
+
         mainPageContainer.add(tipsButton);
         mainPageContainer.setBackground(InitialPage.color);
         mainPageContainer.add(ChangeColor);
         mainPageContainer.add(virusButton);
         mainPageContainer.add(hashCheckButton);
+        mainPageContainer.add(softwareListsButton);
 
     }
 
@@ -141,6 +145,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
         ChangeColor.addActionListener(this);
         virusButton.addActionListener(this);
         hashCheckButton.addActionListener(this);
+        softwareListsButton.addActionListener(this);
     }
 
     public void setLayoutManager() {
@@ -153,46 +158,47 @@ public class mainPageFrame extends JFrame implements ActionListener {
         SearchTool searchForBreach = new SearchTool();
 
         if (e.getSource() == searchButton) {
+            if (!(searchField.getText().isEmpty())) {
+                String searchID, searchSys, searchVersion, searchGen;
+                String theBreach = "";
 
-            String searchID, searchSys, searchVersion, searchGen;
-            String theBreach = "";
+                if (searchByID.isSelected()) {
 
-            if (searchByID.isSelected()) {
+                    searchID = searchField.getText();
+                    theBreach = searchForBreach.searchByID(searchID);
 
-                searchID = searchField.getText();
-                theBreach = searchForBreach.searchByID(searchID);
+                }
+                if (searchBySystem.isSelected()) {
+
+                    searchSys = searchField.getText();
+                    theBreach = searchForBreach.searchBySystem(searchSys);
+
+
+                }
+                if (searchByVersion.isSelected()) {
+
+                    searchVersion = searchField.getText();
+                    theBreach = searchForBreach.searchByVersion(searchVersion);
+
+                }
+                if (searchByKeyWord.isSelected()) {
+
+                    searchGen = searchField.getText();
+                    theBreach = searchForBreach.searchByDescription(searchGen);
+
+                }
+                if ((!searchByID.isSelected()) && (!searchBySystem.isSelected()) && (!searchByVersion.isSelected()) && (!searchByKeyWord.isSelected())) {
+                    searchGen = searchField.getText();
+                    theBreach = searchForBreach.search(searchGen);
+
+                }
+                if (!theBreach.equalsIgnoreCase(" ")) {
+                    System.out.println("final result " + theBreach);
+                    JOptionPane.showMessageDialog(this, theBreach);
+                }
 
             }
-            if (searchBySystem.isSelected()) {
-
-                searchSys = searchField.getText();
-                theBreach = searchForBreach.searchBySystem(searchSys);
-
-
-            }
-            if (searchByVersion.isSelected()) {
-
-                searchVersion = searchField.getText();
-                theBreach = searchForBreach.searchByVersion(searchVersion);
-
-            }
-            if (searchByKeyWord.isSelected()) {
-
-                searchGen = searchField.getText();
-                theBreach = searchForBreach.searchByDescription(searchGen);
-
-            }
-            if ((!searchByID.isSelected()) && (!searchBySystem.isSelected()) && (!searchByVersion.isSelected()) && (!searchByKeyWord.isSelected())) {
-                searchGen = searchField.getText();
-                theBreach = searchForBreach.search(searchGen);
-
-            }
-            if (!theBreach.equalsIgnoreCase(" ")) {
-                System.out.println("final result " + theBreach);
-                JOptionPane.showMessageDialog(this, theBreach);
-            }
-
-
+            JOptionPane.showMessageDialog(null, "Field is empty!");
         }
         if (e.getSource() == logOutButton) {
 
@@ -220,7 +226,6 @@ public class mainPageFrame extends JFrame implements ActionListener {
                 System.out.println(allDataArr[i]);
             }
 
-
             accountSittings sittings = new accountSittings();
             sittings.setUsername(allDataArr[0]);
             sittings.setPassword(allDataArr[1]);
@@ -237,15 +242,15 @@ public class mainPageFrame extends JFrame implements ActionListener {
             searchBySystem.setBackground(InitialPage.color);
             searchByVersion.setBackground(InitialPage.color);
             searchByKeyWord.setBackground(InitialPage.color);
-            ChangeColor.setText("Light Theme");
+            ChangeColor.setText("Light Mode");
         } else {
-            InitialPage.color = new Color(160, 160, 170);
+            InitialPage.color = new Color(93, 93, 112);
             mainPageContainer.setBackground(InitialPage.color);
             searchByID.setBackground(InitialPage.color);
             searchBySystem.setBackground(InitialPage.color);
             searchByVersion.setBackground(InitialPage.color);
             searchByKeyWord.setBackground(InitialPage.color);
-            ChangeColor.setText("Dark Theme");
+            ChangeColor.setText("Dark Mode");
         }
 
         if (e.getSource() == virusButton) {
@@ -260,6 +265,14 @@ public class mainPageFrame extends JFrame implements ActionListener {
         }
         if (e.getSource() == hashCheckButton) {
             VirusReport();
+        }
+
+        if (e.getSource() == softwareListsButton) {
+            this.toFront();
+            setVisible(false);
+            SoftwareListsFrame softPage = new SoftwareListsFrame();
+
+
         }
     }
 
@@ -307,6 +320,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
             return null;
         } catch (Exception e) {
             System.out.println("Error");
+            System.out.println(e);
             return null;
         }
 
@@ -323,7 +337,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
             URI uri = uriBuilder.build();
             HttpResponse<String> response = httpAPI.sendGet(uri);
             if (response != null) {
-                //System.out.println(response.body());
+
                 VirusInfo vInfo = parseVirusResponse(response.body(), VirusInfo.class);
                 JOptionPane.showMessageDialog(null, vInfo);
             }
@@ -336,7 +350,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
     }
 
-    private static VirusInfo parseVirusResponse(String responseString, Class<?> elementClass) {
+    public static VirusInfo parseVirusResponse(String responseString, Class<?> elementClass) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             JsonNode VirusInfoNode = objectMapper.readTree(responseString);
@@ -352,6 +366,5 @@ public class mainPageFrame extends JFrame implements ActionListener {
             e.printStackTrace();
             return null;
         }
-
     }
 }

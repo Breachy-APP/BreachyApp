@@ -7,7 +7,6 @@ import java.util.Map;
 
 public class ScanInfo {
     private String verbose_msg;
-
     private String permalink;
     private String scan_id;
 

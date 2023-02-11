@@ -6,7 +6,6 @@ import java.util.Map;
 
 public class VirusInfo {
     private String scans;
-
     private String McAfee;
     private String detected;
     private String result;
@@ -55,7 +54,6 @@ public class VirusInfo {
         this.detected = (String) McAfee.get("detected");
         this.result = (String) McAfee.get("result");
     }
-
 
     @Override
     public String toString() {

@@ -5,8 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static org.breachy.mainPageFrame.breachyLogo;
 
-    public class tipsPageFrame extends JFrame implements ActionListener {
+
+public class tipsPageFrame extends JFrame implements ActionListener {
 
         Container tipsPageContainer = getContentPane();
 
@@ -35,6 +37,7 @@ import java.awt.event.ActionListener;
             tipsFrame.setVisible(flag);
             tipsFrame.setBounds(600, 150, 350, 500);
             tipsFrame.setResizable(false);
+            tipsFrame.setIconImage(breachyLogo.getImage());
 
         }
 

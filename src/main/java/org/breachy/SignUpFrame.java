@@ -27,7 +27,6 @@ public class SignUpFrame extends JFrame implements ActionListener {
         setLocation();
         addComponentsToContainer();
         addActionEvent();
-
     }
 
     public void setLayoutManager() {
@@ -40,6 +39,7 @@ public class SignUpFrame extends JFrame implements ActionListener {
         eMailLabel.setBounds(50, 100, 100, 30);
         createPasswordLabel.setBounds(50, 150, 100, 30);
         confirmPasswordLabel.setBounds(50, 200, 100, 30);
+
         //label colors
         userLabel.setForeground(Color.white);
         eMailLabel.setForeground(Color.white);
@@ -51,6 +51,7 @@ public class SignUpFrame extends JFrame implements ActionListener {
         emailField.setBounds(160, 100, 150, 30);
         createPasswordField.setBounds(160, 150, 150, 30);
         confirmPasswordField.setBounds(160, 200, 150, 30);
+
         // Button's location
         showPassword.setBounds(160, 250, 150, 30);
         showPassword.setForeground(Color.white);
@@ -124,14 +125,12 @@ public class SignUpFrame extends JFrame implements ActionListener {
             String passwordText;
             String conPasswordText;
 
+            // Username info
             userNameText = userTextField.getText();
             emailText = emailField.getText();
             // password info
             passwordText = createPasswordField.getText();
             conPasswordText = confirmPasswordField.getText();
-
-            // username and email info
-
 
                 // Check if already exists then Insert to DB
                 if (isComplete(userNameText, emailText, passwordText, conPasswordText)) {

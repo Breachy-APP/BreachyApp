@@ -10,8 +10,10 @@ public class DBActions {
 
     public DBActions(){
 
-        String username = this.username;
-        String password = this.password;
+        String username = null;
+        String password = null;
+        String Email = null;
+        String accountStatus = null;
 
     }
     public DBActions(String username, String password, String Email){
@@ -131,9 +133,6 @@ public class DBActions {
                     setAccountStatus(this.accountStatus);
                     st = getAccountStatus();
                     System.out.println(u + "Checking " + p + " ");
-
-                    System.out.println("siuuuuuuuuuuuuuuu " + retrieveAccountInfo(u,p));
-
                     isAuth = true;
 
                 }
@@ -183,16 +182,11 @@ public class DBActions {
             while(rs.next()){
                 if (rs.getString("breachSystem").equalsIgnoreCase(req)){
                     result = rs.getString("breachDescription");
-
-
                 }
                 else{
                     result = "No Matches";
-
                 }
-
             }
-
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -224,21 +218,20 @@ public class DBActions {
             PreparedStatement updateStmt = dbConnection.prepareStatement("update accounts set username = ? where username = ?;");
             updateStmt.setString(1, sData[0]);
             updateStmt.setString(2,this.username);
-            //updateStmt.setString(2,sData[1]);
-            //updateStmt.setString(3,sData[2]);
-            //updateStmt.setString(4,sData[3]);
+
             int rows = updateStmt.executeUpdate();
 
             System.out.println("Rows Updates: " + rows);
-            System.out.println("Account is Updates Successfully");
+            if (rows > 0){
+                System.out.println("Account is Updates Successfully");
+            }
+            else{
+                System.out.println("Nothing is Updated");
+            }
 
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
-        //todo
-
     }
     public void deleteAccount(String dUsername){
 
@@ -257,7 +250,7 @@ public class DBActions {
 
             }
             else{
-                System.out.println("No Accoounts were found");
+                System.out.println("No Accounts were found");
             }
         }
         catch (SQLException e){
