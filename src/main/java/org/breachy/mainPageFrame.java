@@ -158,7 +158,9 @@ public class mainPageFrame extends JFrame implements ActionListener {
         SearchTool searchForBreach = new SearchTool();
 
         if (e.getSource() == searchButton) {
-            if (!(searchField.getText().isEmpty())) {
+            if (searchField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Field is empty!");
+            } else {
                 String searchID, searchSys, searchVersion, searchGen;
                 String theBreach = "";
 
@@ -198,7 +200,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
                 }
 
             }
-            JOptionPane.showMessageDialog(null, "Field is empty!");
+
         }
         if (e.getSource() == logOutButton) {
 
