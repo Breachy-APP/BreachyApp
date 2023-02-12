@@ -294,7 +294,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
                     VirusScan();
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
-                } catch (InterruptedException ex) {
+                } catch (InterruptedException | URISyntaxException ex) {
                     throw new RuntimeException(ex);
                 }
 
@@ -312,7 +312,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
             }
         }
 
-    public static void VirusScan() throws IOException, InterruptedException {
+    public static void VirusScan() throws IOException, InterruptedException, URISyntaxException {
 
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new File(".")); //sets current directory
@@ -333,6 +333,13 @@ public class mainPageFrame extends JFrame implements ActionListener {
             //System.out.println(response.body());
             ScanInfo sInfo = parseVirusScanResponse(response.body(), ScanInfo.class);
             JOptionPane.showMessageDialog(null, sInfo);
+            int resp = JOptionPane.showConfirmDialog(null, "Do you want to open the website?", "Open Website", JOptionPane.YES_NO_OPTION);
+            if (resp == JOptionPane.YES_OPTION) {
+                URI url = new URI(sInfo.getPermalink().replace("\"",""));
+                Desktop desktop = Desktop.getDesktop();
+                desktop.browse(url);
+            } else {
+            }
         }
 
     }
@@ -355,6 +362,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
             e.printStackTrace();
             return null;
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error");
             System.out.println("Error");
             System.out.println(e);
             return null;
@@ -367,7 +375,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
         hashID = searchField.getText();
         try {
             uriBuilder = new URIBuilder(API_Report);
-            uriBuilder.addParameter("apikey", System.getenv("API_KEY"));
+            uriBuilder.addParameter("apikey", "781dc33df7ae27f765cf69c4f0f6c87cc159a5260fdf2c132a5eada8dc229fac");
             uriBuilder.addParameter("resource", hashID);
             uriBuilder.addParameter("allinfo", "false");
             URI uri = uriBuilder.build();
@@ -379,7 +387,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
             }
 
         } catch (URISyntaxException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Enter SCAN ID OR FILE HASH !");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Enter SCAN ID OR FILE HASH !");
         }

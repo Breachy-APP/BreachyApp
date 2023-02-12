@@ -56,9 +56,7 @@ public class ScanInfo {
     @Override
     public String toString() {
         return verbose_msg.replace("\"", "") +
-                "\nReport result is here: " + permalink.replace("\"", "") +
                 "\nScan id= " + scan_id.replace("\"", "");
     }
 
 }
-

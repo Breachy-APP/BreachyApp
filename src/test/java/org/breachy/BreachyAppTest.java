@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -30,7 +31,7 @@ public class BreachyAppTest {
     }
 
     @Test
-    void MainPageTest() throws IOException, InterruptedException {
+    void MainPageTest() throws IOException, InterruptedException, URISyntaxException {
 
         mainPage.openMainPage(mainPage, true);
         mainPage.setLayoutManager();
