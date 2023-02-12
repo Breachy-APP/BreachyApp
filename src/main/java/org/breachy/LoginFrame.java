@@ -82,7 +82,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 
             DBActions accessAccount = new DBActions(userText, pwdText);
 
-            if(accessAccount.authorizeAccountAccess(userText, pwdText)){
+            if(accessAccount.checkPassword(userText,pwdText)){
 
                 this.toFront();
                 setVisible(false);

@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abbbd0c2-293b-4b33-b293-c3f4285a0a8f" name="Changes" comment="" />
+    <list default="true" id="abbbd0c2-293b-4b33-b293-c3f4285a0a8f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/breachy/SoftwareListsFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/breachyLogo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/DBActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/DBActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/InitialPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/InitialPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/SignUpFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/SignUpFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/accountSittings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/accountSittings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/mainPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/mainPageFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/tipsPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/tipsPageFrame.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,20 +56,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "269",
-    "last_directory_selection": "C:/Users/Hamza Helal Dubh/Desktop/6th Semester/SWE-251/Project251/BreachyApp/src/main/java/org/example",
-    "last_opened_file_path": "C:/Users/Hamza Helal Dubh/Desktop/todo-api",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;269&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Hamza Helal Dubh/Desktop/6th Semester/SWE-251/Project251/BreachyApp/src/main/java/org/example&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/BaRaa/IntelliJ IDEA Projects/hashing&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\BaRaa\IntelliJ IDEA Projects\BreachyApp\src\main\resources" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.example" />
       <recent name="" />
@@ -68,7 +83,20 @@
       <command value="JLabel" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BreachyAppTest">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.breachy.Main" />
+      <module name="Breachy-Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.breachy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BreachyAppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Breachy-Application" />
       <extension name="coverage">
@@ -116,22 +144,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BreachyAppTest.shouldDisplayLoginPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Breachy-Application" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.breachy.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.breachy" />
-      <option name="MAIN_CLASS_NAME" value="org.breachy.BreachyAppTest" />
-      <option name="METHOD_NAME" value="shouldDisplayLoginPage" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BreachyAppTest.signUpPageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Breachy-Application" />
       <extension name="coverage">
@@ -149,19 +161,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.BreachyAppTest" />
       <item itemvalue="JUnit.BreachyAppTest.MainPageTest" />
       <item itemvalue="JUnit.BreachyAppTest.initialPageTest" />
-      <item itemvalue="JUnit.BreachyAppTest.shouldDisplayLoginPage" />
       <item itemvalue="JUnit.BreachyAppTest.signUpPageTest" />
-      <item itemvalue="JUnit.BreachyAppTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.BreachyAppTest" />
         <item itemvalue="JUnit.BreachyAppTest.signUpPageTest" />
         <item itemvalue="JUnit.BreachyAppTest.MainPageTest" />
         <item itemvalue="JUnit.BreachyAppTest.initialPageTest" />
-        <item itemvalue="JUnit.BreachyAppTest.shouldDisplayLoginPage" />
       </list>
     </recent_temporary>
   </component>
@@ -194,7 +206,7 @@
     <SUITE FILE_PATH="coverage/BreachyApp$BreachyAppTest_initialPageTest.ic" NAME="BreachyAppTest.initialPageTest Coverage Results" MODIFIED="1675944599174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>org.breachy.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/BreachyApp$BreachyAppTest.ic" NAME="BreachyAppTest Coverage Results" MODIFIED="1675947555749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/BreachyApp$BreachyAppTest.ic" NAME="BreachyAppTest Coverage Results" MODIFIED="1675946695507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>org.breachy.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/BreachyApp$BreachyAppTest_signUpPageTest.ic" NAME="BreachyAppTest.signUpPageTest Coverage Results" MODIFIED="1675945651885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

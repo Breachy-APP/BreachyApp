@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import static org.breachy.mainPageFrame.breachyLogo;
+
 
 public class accountSittings extends JFrame implements ActionListener {
     //todo sittings
@@ -83,6 +85,7 @@ public class accountSittings extends JFrame implements ActionListener {
         sittingsFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         sittingsFrame.setBounds(600, 150, 350, 500);
         sittingsFrame.setResizable(false);
+        sittingsFrame.setIconImage(breachyLogo.getImage());
 
     }
     public void setLayoutManager(){

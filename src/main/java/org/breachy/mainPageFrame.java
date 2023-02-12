@@ -19,6 +19,7 @@ import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 public class mainPageFrame extends JFrame implements ActionListener {
+    static ImageIcon breachyLogo = new ImageIcon(mainPageFrame.class.getClassLoader().getResource("breachyLogo.jpg"));
     private final static String API_Report = "https://www.virustotal.com/vtapi/v2/file/report?";
     private final static String API_Scan = "https://www.virustotal.com/vtapi/v2/file/scan";
     public static File file;
@@ -40,11 +41,13 @@ public class mainPageFrame extends JFrame implements ActionListener {
     JButton virusButton = new JButton("Virus File Scan");
     JButton hashCheckButton = new JButton("Hash/ID Check");
 
+    JButton softwareListsButton = new JButton("OS Types");
+
     String allAccountData;
-    String accountUsername;
-    String accountPassword;
-    String accountEmail;
-    String accountStatus;
+//    String accountUsername;
+//    String accountPassword;
+//    String accountEmail;
+//    String accountStatus;
     static String hashID;
 
 
@@ -79,14 +82,20 @@ public class mainPageFrame extends JFrame implements ActionListener {
         searchByKeyWord.setForeground(Color.white);
         searchByKeyWord.setBackground(InitialPage.color);
 
-        if(allAccountData != null){logOutButton.setBounds(200, 400, 100, 30);}
-        else {logOutButton.setBounds(125, 400, 100, 30);
-        logOutButton.setText("Return");}
+
+        if (allAccountData != null) {
+            logOutButton.setBounds(200, 400, 100, 30);
+        } else {
+            logOutButton.setBounds(125, 400, 100, 30);
+            logOutButton.setText("Return");
+        }
+
 
         accountSittings.setBounds(30, 400, 150, 30);
         tipsButton.setBounds(10, 49, 100, 30);
         virusButton.setBounds(100, 310, 150, 30);
         hashCheckButton.setBounds(100, 350, 150, 30);
+        softwareListsButton.setBounds(100, 270, 150, 30);
         ChangeColor.setBounds(220, 49, 105, 30);
 
     }
@@ -98,6 +107,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
         mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         mainFrame.setBounds(600, 150, 350, 500);
         mainFrame.setResizable(false);
+        mainFrame.setIconImage(breachyLogo.getImage());
 
     }
 
@@ -112,14 +122,17 @@ public class mainPageFrame extends JFrame implements ActionListener {
         mainPageContainer.add(searchByKeyWord);
         mainPageContainer.add(logOutButton);
 
-        if(allAccountData!=null){
-        mainPageContainer.add(accountSittings);}
+
+        if (allAccountData != null) {
+            mainPageContainer.add(accountSittings);
+        }
 
         mainPageContainer.add(tipsButton);
         mainPageContainer.setBackground(InitialPage.color);
         mainPageContainer.add(ChangeColor);
         mainPageContainer.add(virusButton);
         mainPageContainer.add(hashCheckButton);
+        mainPageContainer.add(softwareListsButton);
 
     }
 
@@ -136,6 +149,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
         ChangeColor.addActionListener(this);
         virusButton.addActionListener(this);
         hashCheckButton.addActionListener(this);
+        softwareListsButton.addActionListener(this);
     }
 
     public void setLayoutManager() {
@@ -148,113 +162,155 @@ public class mainPageFrame extends JFrame implements ActionListener {
         SearchTool searchForBreach = new SearchTool();
 
         if (e.getSource() == searchButton) {
+            if (searchField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Field is empty!");
+            } else {
+                String searchID, searchSys, searchVersion, searchGen;
+                String theBreach = "";
 
-            String searchID, searchSys, searchVersion, searchGen;
-            String theBreach = "";
+                if (searchByID.isSelected()) {
 
-            if (searchByID.isSelected()) {
+                    searchID = searchField.getText();
+                    theBreach = searchForBreach.searchByID(searchID);
 
-                searchID = searchField.getText();
-                theBreach = searchForBreach.searchByID(searchID);
+                }
+                if (searchBySystem.isSelected()) {
+
+                    searchSys = searchField.getText();
+                    theBreach = searchForBreach.searchBySystem(searchSys);
+
+
+                }
+                if (searchByVersion.isSelected()) {
+
+                    searchVersion = searchField.getText();
+                    theBreach = searchForBreach.searchByVersion(searchVersion);
+
+                }
+                if (searchByKeyWord.isSelected()) {
+
+                    searchGen = searchField.getText();
+                    theBreach = searchForBreach.searchByDescription(searchGen);
+
+                }
+                if ((!searchByID.isSelected()) && (!searchBySystem.isSelected()) && (!searchByVersion.isSelected()) && (!searchByKeyWord.isSelected())) {
+                    searchGen = searchField.getText();
+                    theBreach = searchForBreach.search(searchGen);
+
+                }
+                if (!theBreach.equalsIgnoreCase(" ")) {
+                    System.out.println("final result " + theBreach);
+                    JOptionPane.showMessageDialog(this, theBreach);
+                }
+
+
+                if (searchBySystem.isSelected()) {
+
+                    searchSys = searchField.getText();
+                    theBreach = searchForBreach.searchBySystem(searchSys);
+
+
+                }
+                if (searchByVersion.isSelected()) {
+
+                    searchVersion = searchField.getText();
+                    theBreach = searchForBreach.searchByVersion(searchVersion);
+
+                }
+                if (searchByKeyWord.isSelected()) {
+
+                    searchGen = searchField.getText();
+                    theBreach = searchForBreach.searchByDescription(searchGen);
+
+                }
+                if ((!searchByID.isSelected()) && (!searchBySystem.isSelected()) && (!searchByVersion.isSelected()) && (!searchByKeyWord.isSelected())) {
+                    searchGen = searchField.getText();
+                    theBreach = searchForBreach.search(searchGen);
+
+                }
+                if (!theBreach.equalsIgnoreCase(" ")) {
+                    System.out.println("final result " + theBreach);
+                    JOptionPane.showMessageDialog(this, theBreach);
+                }
+
 
             }
-            if (searchBySystem.isSelected()) {
-
-                searchSys = searchField.getText();
-                theBreach = searchForBreach.searchBySystem(searchSys);
-
-
-            }
-            if (searchByVersion.isSelected()) {
-
-                searchVersion = searchField.getText();
-                theBreach = searchForBreach.searchByVersion(searchVersion);
-
-            }
-            if (searchByKeyWord.isSelected()) {
-
-                searchGen = searchField.getText();
-                theBreach = searchForBreach.searchByDescription(searchGen);
-
-            }
-            if ((!searchByID.isSelected()) && (!searchBySystem.isSelected()) && (!searchByVersion.isSelected()) && (!searchByKeyWord.isSelected())) {
-                searchGen = searchField.getText();
-                theBreach = searchForBreach.search(searchGen);
-
-            }
-            if (!theBreach.equalsIgnoreCase(" ")) {
-                System.out.println("final result " + theBreach);
-                JOptionPane.showMessageDialog(this, theBreach);
-            }
-
         }
-        if (e.getSource() == logOutButton) {
+            if (e.getSource() == logOutButton) {
 
-            JOptionPane.showMessageDialog(this, "Thank You For using Out Application");
-            this.toBack();
-            setVisible(false);
-            InitialPage initFrame = new InitialPage();
-            initFrame.openIntialPage(initFrame, true);
+                JOptionPane.showMessageDialog(this, "Thank You For using Out Application");
+                this.toBack();
+                setVisible(false);
+                InitialPage initFrame = new InitialPage();
+                initFrame.openIntialPage(initFrame, true);
 
-        }
-        if (e.getSource() == tipsButton) {
-            this.toFront();
-            setVisible(false);
-            tipsPageFrame tipsPage = new tipsPageFrame();
-            tipsPage.openTipsPage(tipsPage, true);
+            }
+            if (e.getSource() == tipsButton) {
+                this.toFront();
+                setVisible(false);
+                tipsPageFrame tipsPage = new tipsPageFrame();
+                tipsPage.openTipsPage(tipsPage, true);
 
-        }
-        if (e.getSource() == accountSittings) {
+            }
+            if (e.getSource() == accountSittings) {
 
-            this.toFront();
-            setVisible(false);
+                this.toFront();
+                setVisible(false);
 
-            String[] allDataArr = allAccountData.split(" : ");
-            for (int i = 0; i < allDataArr.length; i++) {
-                System.out.println(allDataArr[i]);
+                String[] allDataArr = allAccountData.split(" : ");
+                for (int i = 0; i < allDataArr.length; i++) {
+                    System.out.println(allDataArr[i]);
+                }
+
+                accountSittings sittings = new accountSittings();
+                sittings.setUsername(allDataArr[0]);
+                sittings.setPassword(allDataArr[1]);
+                sittings.setEmail(allDataArr[2]);
+                sittings.setStatus(allDataArr[3]);
+
+                sittings.openSittingsPage(sittings, true);
+
+            }
+            if (ChangeColor.isSelected()) {
+                InitialPage.color = new Color(40, 40, 40);
+                mainPageContainer.setBackground(InitialPage.color);
+                searchByID.setBackground(InitialPage.color);
+                searchBySystem.setBackground(InitialPage.color);
+                searchByVersion.setBackground(InitialPage.color);
+                searchByKeyWord.setBackground(InitialPage.color);
+                ChangeColor.setText("Light Mode");
+            } else {
+                InitialPage.color = new Color(93, 93, 112);
+                mainPageContainer.setBackground(InitialPage.color);
+                searchByID.setBackground(InitialPage.color);
+                searchBySystem.setBackground(InitialPage.color);
+                searchByVersion.setBackground(InitialPage.color);
+                searchByKeyWord.setBackground(InitialPage.color);
+                ChangeColor.setText("Dark Mode");
             }
 
-            accountSittings sittings = new accountSittings();
-            sittings.setUsername(allDataArr[0]);
-            sittings.setPassword(allDataArr[1]);
-            sittings.setEmail(allDataArr[2]);
-            sittings.setStatus(allDataArr[3]);
+            if (e.getSource() == virusButton) {
+                try {
+                    VirusScan();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
 
-            sittings.openSittingsPage(sittings, true);
-
-        }
-        if (ChangeColor.isSelected()) {
-            InitialPage.color = new Color(40, 40, 40);
-            mainPageContainer.setBackground(InitialPage.color);
-            searchByID.setBackground(InitialPage.color);
-            searchBySystem.setBackground(InitialPage.color);
-            searchByVersion.setBackground(InitialPage.color);
-            searchByKeyWord.setBackground(InitialPage.color);
-            ChangeColor.setText("Light Mode");
-        } else {
-            InitialPage.color = new Color(93, 93, 112);
-            mainPageContainer.setBackground(InitialPage.color);
-            searchByID.setBackground(InitialPage.color);
-            searchBySystem.setBackground(InitialPage.color);
-            searchByVersion.setBackground(InitialPage.color);
-            searchByKeyWord.setBackground(InitialPage.color);
-            ChangeColor.setText("Dark Mode");
-        }
-
-        if (e.getSource() == virusButton) {
-            try {
-                VirusScan();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            } catch (InterruptedException ex) {
-                throw new RuntimeException(ex);
+            }
+            if (e.getSource() == hashCheckButton) {
+                VirusReport();
             }
 
+            if (e.getSource() == softwareListsButton) {
+                this.toFront();
+                setVisible(false);
+                SoftwareListsFrame softPage = new SoftwareListsFrame();
+
+
+            }
         }
-        if (e.getSource() == hashCheckButton) {
-            VirusReport();
-        }
-    }
 
     public static void VirusScan() throws IOException, InterruptedException {
 
@@ -330,7 +386,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
     }
 
-    public  static VirusInfo parseVirusResponse(String responseString, Class<?> elementClass) {
+    public static VirusInfo parseVirusResponse(String responseString, Class<?> elementClass) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             JsonNode VirusInfoNode = objectMapper.readTree(responseString);

@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static org.breachy.mainPageFrame.breachyLogo;
+
 public class InitialPage extends JFrame implements ActionListener {
 
     Container initPageContainer = getContentPane();
@@ -29,6 +31,7 @@ public class InitialPage extends JFrame implements ActionListener {
         initFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         initFrame.setBounds(600, 150, 350, 500);
         initFrame.setResizable(false);
+        initFrame.setIconImage(breachyLogo.getImage());
     }
     public void openLogInForm(boolean c) {
 
@@ -38,6 +41,7 @@ public class InitialPage extends JFrame implements ActionListener {
         logInFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         logInFrame.setBounds(600, 150, 350, 500);
         logInFrame.setResizable(false);
+        logInFrame.setIconImage(breachyLogo.getImage());
 
     }
     public static void openSignInForm(boolean c) {
@@ -48,6 +52,7 @@ public class InitialPage extends JFrame implements ActionListener {
         signUpFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         signUpFrame.setBounds(600, 150, 350, 500);
         signUpFrame.setResizable(false);
+        signUpFrame.setIconImage(breachyLogo.getImage());
 
     }
     public void setLayoutManager(){
