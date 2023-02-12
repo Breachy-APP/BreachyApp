@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abbbd0c2-293b-4b33-b293-c3f4285a0a8f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/breachy/mainPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/breachy/mainPageFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/breachy/BreachyAppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/breachy/BreachyAppTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="abbbd0c2-293b-4b33-b293-c3f4285a0a8f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "269",
     "last_directory_selection": "C:/Users/Hamza Helal Dubh/Desktop/6th Semester/SWE-251/Project251/BreachyApp/src/main/java/org/example",
-    "last_opened_file_path": "C:/Users/Hamza Helal Dubh/Desktop/6th Semester/SWE-251/unit-testing-and-coverage-HmzhDubh-main",
+    "last_opened_file_path": "C:/Users/Hamza Helal Dubh/Desktop/todo-api",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -198,7 +194,7 @@
     <SUITE FILE_PATH="coverage/BreachyApp$BreachyAppTest_initialPageTest.ic" NAME="BreachyAppTest.initialPageTest Coverage Results" MODIFIED="1675944599174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>org.breachy.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/BreachyApp$BreachyAppTest.ic" NAME="BreachyAppTest Coverage Results" MODIFIED="1675946695507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/BreachyApp$BreachyAppTest.ic" NAME="BreachyAppTest Coverage Results" MODIFIED="1675947555749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>org.breachy.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/BreachyApp$BreachyAppTest_signUpPageTest.ic" NAME="BreachyAppTest.signUpPageTest Coverage Results" MODIFIED="1675945651885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
