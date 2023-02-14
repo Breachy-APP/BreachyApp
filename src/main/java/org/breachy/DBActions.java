@@ -57,17 +57,6 @@ public class DBActions {
     public void insertAccount(){
         //todo
         try {
-
-
-//            //make the salt and the hash
-//            byte[] salt = Base64.getDecoder().decode(saltString);
-//            // Use the salt to generate a secret key
-//            SecretKeySpec secretKey = new SecretKeySpec(salt, "AES");
-//            Cipher cipher = Cipher.getInstance("AES");
-//            cipher.init(Cipher.DECRYPT_MODE, secretKey);
-//            byte[] decryptedPassword = cipher.doFinal(Base64.getDecoder().decode(storedPassword));
-
-
             Connection dbConnection = DBConnection.getInstance().getConnection();
             PreparedStatement insertStmt = dbConnection.prepareStatement("Insert into accounts(username, upassword, Email, accountStatus) Values (?, ?, ?, ?);");
             insertStmt.setString(1, this.username);

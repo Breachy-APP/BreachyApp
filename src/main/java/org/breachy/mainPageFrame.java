@@ -44,10 +44,6 @@ public class mainPageFrame extends JFrame implements ActionListener {
     JButton softwareListsButton = new JButton("OS Types");
 
     String allAccountData;
-//    String accountUsername;
-//    String accountPassword;
-//    String accountEmail;
-//    String accountStatus;
     static String hashID;
 
 
@@ -372,8 +368,8 @@ public class mainPageFrame extends JFrame implements ActionListener {
 
     public static void VirusReport() {
         URIBuilder uriBuilder = null;
-        hashID = searchField.getText();
         try {
+            hashID = searchField.getText();
             uriBuilder = new URIBuilder(API_Report);
             uriBuilder.addParameter("apikey", "781dc33df7ae27f765cf69c4f0f6c87cc159a5260fdf2c132a5eada8dc229fac");
             uriBuilder.addParameter("resource", hashID);
