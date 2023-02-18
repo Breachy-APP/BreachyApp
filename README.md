@@ -12,4 +12,4 @@
 Unit testing, code coverage, and continuous integration (CI) pipeline.
 
 [![Breachy-APP](https://circleci.com/gh/Breachy-APP/BreachyApp.svg?style=svg)](https://app.circleci.com/pipelines/github/Breachy-APP/BreachyApp)
-[![Workflow for Breachy-App](https://github.com/Breachy-APP/BreachyApp/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/Breachy-APP/BreachyApp/actions/workflows/main.yml)
+[![Workflow for Breachy-App](https://github.com/Breachy-APP/BreachyApp/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/Breachy-APP/BreachyApp/actions/workflows/main.yml) ![Coverage for Breachy-App](https://img.shields.io/badge/Coverage-82%25-green)
