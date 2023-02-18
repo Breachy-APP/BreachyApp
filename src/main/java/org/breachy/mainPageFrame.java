@@ -22,6 +22,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
     static ImageIcon breachyLogo = new ImageIcon(mainPageFrame.class.getClassLoader().getResource("breachyLogo.jpg"));
     private final static String API_Report = "https://www.virustotal.com/vtapi/v2/file/report?";
     private final static String API_Scan = "https://www.virustotal.com/vtapi/v2/file/scan";
+    private final static String API_Key = System.getenv("APIkey");
     public static File file;
     public static Scanner input = new Scanner(System.in);
 
@@ -163,150 +164,153 @@ public class mainPageFrame extends JFrame implements ActionListener {
             } else {
                 String searchID, searchSys, searchVersion, searchGen;
                 String theBreach = "";
-
-                if (searchByID.isSelected()) {
-
-                    searchID = searchField.getText();
-                    theBreach = searchForBreach.searchByID(searchID);
-
-                }
-                if (searchBySystem.isSelected()) {
-
-                    searchSys = searchField.getText();
-                    theBreach = searchForBreach.searchBySystem(searchSys);
-
-
-                }
-                if (searchByVersion.isSelected()) {
-
-                    searchVersion = searchField.getText();
-                    theBreach = searchForBreach.searchByVersion(searchVersion);
-
-                }
-                if (searchByKeyWord.isSelected()) {
-
-                    searchGen = searchField.getText();
-                    theBreach = searchForBreach.searchByDescription(searchGen);
-
-                }
-                if ((!searchByID.isSelected()) && (!searchBySystem.isSelected()) && (!searchByVersion.isSelected()) && (!searchByKeyWord.isSelected())) {
-                    searchGen = searchField.getText();
-                    theBreach = searchForBreach.search(searchGen);
-
-                }
-                if (!theBreach.equalsIgnoreCase(" ")) {
-                    System.out.println("final result " + theBreach);
-                    JOptionPane.showMessageDialog(this, theBreach);
-                }
-
-
-                if (searchBySystem.isSelected()) {
-
-                    searchSys = searchField.getText();
-                    theBreach = searchForBreach.searchBySystem(searchSys);
-
-
-                }
-                if (searchByVersion.isSelected()) {
-
-                    searchVersion = searchField.getText();
-                    theBreach = searchForBreach.searchByVersion(searchVersion);
-
-                }
-                if (searchByKeyWord.isSelected()) {
-
-                    searchGen = searchField.getText();
-                    theBreach = searchForBreach.searchByDescription(searchGen);
-
-                }
-                if ((!searchByID.isSelected()) && (!searchBySystem.isSelected()) && (!searchByVersion.isSelected()) && (!searchByKeyWord.isSelected())) {
-                    searchGen = searchField.getText();
-                    theBreach = searchForBreach.search(searchGen);
-
-                }
-                if (!theBreach.equalsIgnoreCase(" ")) {
-                    System.out.println("final result " + theBreach);
-                    JOptionPane.showMessageDialog(this, theBreach);
-                }
-
-
-            }
-        }
-            if (e.getSource() == logOutButton) {
-
-                JOptionPane.showMessageDialog(this, "Thank You For using Out Application");
-                this.toBack();
-                setVisible(false);
-                InitialPage initFrame = new InitialPage();
-                initFrame.openIntialPage(initFrame, true);
-
-            }
-            if (e.getSource() == tipsButton) {
-                this.toFront();
-                setVisible(false);
-                tipsPageFrame tipsPage = new tipsPageFrame();
-                tipsPage.openTipsPage(tipsPage, true);
-
-            }
-            if (e.getSource() == accountSittings) {
-
-                this.toFront();
-                setVisible(false);
-
-                String[] allDataArr = allAccountData.split(" : ");
-                for (int i = 0; i < allDataArr.length; i++) {
-                    System.out.println(allDataArr[i]);
-                }
-
-                accountSittings sittings = new accountSittings();
-                sittings.setUsername(allDataArr[0]);
-                sittings.setPassword(allDataArr[1]);
-                sittings.setEmail(allDataArr[2]);
-                sittings.setStatus(allDataArr[3]);
-
-                sittings.openSittingsPage(sittings, true);
-
-            }
-            if (ChangeColor.isSelected()) {
-                InitialPage.color = new Color(40, 40, 40);
-                mainPageContainer.setBackground(InitialPage.color);
-                searchByID.setBackground(InitialPage.color);
-                searchBySystem.setBackground(InitialPage.color);
-                searchByVersion.setBackground(InitialPage.color);
-                searchByKeyWord.setBackground(InitialPage.color);
-                ChangeColor.setText("Light Mode");
-            } else {
-                InitialPage.color = new Color(93, 93, 112);
-                mainPageContainer.setBackground(InitialPage.color);
-                searchByID.setBackground(InitialPage.color);
-                searchBySystem.setBackground(InitialPage.color);
-                searchByVersion.setBackground(InitialPage.color);
-                searchByKeyWord.setBackground(InitialPage.color);
-                ChangeColor.setText("Dark Mode");
-            }
-
-            if (e.getSource() == virusButton) {
                 try {
-                    VirusScan();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                } catch (InterruptedException | URISyntaxException ex) {
-                    throw new RuntimeException(ex);
+                    if (searchByID.isSelected()) {
+
+                        searchID = searchField.getText();
+                        theBreach = searchForBreach.searchByID(searchID);
+
+                    }
+                    if (searchBySystem.isSelected()) {
+
+                        searchSys = searchField.getText();
+                        theBreach = searchForBreach.searchBySystem(searchSys);
+
+
+                    }
+                    if (searchByVersion.isSelected()) {
+
+                        searchVersion = searchField.getText();
+                        theBreach = searchForBreach.searchByVersion(searchVersion);
+
+                    }
+                    if (searchByKeyWord.isSelected()) {
+
+                        searchGen = searchField.getText();
+                        theBreach = searchForBreach.searchByDescription(searchGen);
+
+                    }
+                    if ((!searchByID.isSelected()) && (!searchBySystem.isSelected()) && (!searchByVersion.isSelected()) && (!searchByKeyWord.isSelected())) {
+                        searchGen = searchField.getText();
+                        theBreach = searchForBreach.search(searchGen);
+
+                    }
+                    if (!theBreach.equalsIgnoreCase(" ")) {
+                        System.out.println("final result " + theBreach);
+                        JOptionPane.showMessageDialog(this, theBreach);
+                    }
+
+
+                    if (searchBySystem.isSelected()) {
+
+                        searchSys = searchField.getText();
+                        theBreach = searchForBreach.searchBySystem(searchSys);
+
+
+                    }
+                    if (searchByVersion.isSelected()) {
+
+                        searchVersion = searchField.getText();
+                        theBreach = searchForBreach.searchByVersion(searchVersion);
+
+                    }
+                    if (searchByKeyWord.isSelected()) {
+
+                        searchGen = searchField.getText();
+                        theBreach = searchForBreach.searchByDescription(searchGen);
+
+                    }
+                    if ((!searchByID.isSelected()) && (!searchBySystem.isSelected()) && (!searchByVersion.isSelected()) && (!searchByKeyWord.isSelected())) {
+                        searchGen = searchField.getText();
+                        theBreach = searchForBreach.search(searchGen);
+
+                    }
+                    if (!theBreach.equalsIgnoreCase(" ")) {
+                        System.out.println("final result " + theBreach);
+                        JOptionPane.showMessageDialog(this, theBreach);
+                    }
+
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Wrong search syntax!");
                 }
-
-            }
-            if (e.getSource() == hashCheckButton) {
-                VirusReport();
-            }
-
-            if (e.getSource() == softwareListsButton) {
-                this.toFront();
-                setVisible(false);
-                SoftwareListsFrame softPage = new SoftwareListsFrame();
-
-
             }
         }
+        if (e.getSource() == logOutButton) {
+
+            JOptionPane.showMessageDialog(this, "Thank You For using Out Application");
+            this.toBack();
+            setVisible(false);
+            InitialPage initFrame = new InitialPage();
+            initFrame.openIntialPage(initFrame, true);
+
+        }
+        if (e.getSource() == tipsButton) {
+            this.toFront();
+            setVisible(false);
+            tipsPageFrame tipsPage = new tipsPageFrame();
+            tipsPage.openTipsPage(tipsPage, true);
+
+        }
+        if (e.getSource() == accountSittings) {
+
+            this.toFront();
+            setVisible(false);
+
+            String[] allDataArr = allAccountData.split(" : ");
+            for (int i = 0; i < allDataArr.length; i++) {
+                System.out.println(allDataArr[i]);
+            }
+
+            accountSittings sittings = new accountSittings();
+            sittings.setUsername(allDataArr[0]);
+            sittings.setPassword(allDataArr[1]);
+            sittings.setEmail(allDataArr[2]);
+            sittings.setStatus(allDataArr[3]);
+
+            sittings.openSittingsPage(sittings, true);
+
+        }
+        if (ChangeColor.isSelected()) {
+            InitialPage.color = new Color(40, 40, 40);
+            mainPageContainer.setBackground(InitialPage.color);
+            searchByID.setBackground(InitialPage.color);
+            searchBySystem.setBackground(InitialPage.color);
+            searchByVersion.setBackground(InitialPage.color);
+            searchByKeyWord.setBackground(InitialPage.color);
+            ChangeColor.setText("Light Mode");
+        } else {
+            InitialPage.color = new Color(93, 93, 112);
+            mainPageContainer.setBackground(InitialPage.color);
+            searchByID.setBackground(InitialPage.color);
+            searchBySystem.setBackground(InitialPage.color);
+            searchByVersion.setBackground(InitialPage.color);
+            searchByKeyWord.setBackground(InitialPage.color);
+            ChangeColor.setText("Dark Mode");
+        }
+
+        if (e.getSource() == virusButton) {
+            try {
+                VirusScan();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            } catch (InterruptedException | URISyntaxException ex) {
+                throw new RuntimeException(ex);
+            }
+
+        }
+        if (e.getSource() == hashCheckButton) {
+            VirusReport();
+        }
+
+        if (e.getSource() == softwareListsButton) {
+            this.toFront();
+            setVisible(false);
+            SoftwareListsFrame softPage = new SoftwareListsFrame();
+
+
+        }
+    }
 
     public static void VirusScan() throws IOException, InterruptedException, URISyntaxException {
 
@@ -322,7 +326,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
                 .uri(URI.create(API_Scan))
                 .header("accept", "text/plain")
                 .header("content-type", "application/x-www-form-urlencoded")
-                .method("POST", HttpRequest.BodyPublishers.ofString("apikey=781dc33df7ae27f765cf69c4f0f6c87cc159a5260fdf2c132a5eada8dc229fac&file=" + file))
+                .method("POST", HttpRequest.BodyPublishers.ofString("apikey=" + API_Key + "&file=" + file))
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
         if (response != null) {
@@ -331,7 +335,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, sInfo);
             int resp = JOptionPane.showConfirmDialog(null, "Do you want to open the website?", "Open Website", JOptionPane.YES_NO_OPTION);
             if (resp == JOptionPane.YES_OPTION) {
-                URI url = new URI(sInfo.getPermalink().replace("\"",""));
+                URI url = new URI(sInfo.getPermalink().replace("\"", ""));
                 Desktop desktop = Desktop.getDesktop();
                 desktop.browse(url);
             } else {
@@ -371,7 +375,7 @@ public class mainPageFrame extends JFrame implements ActionListener {
         try {
             hashID = searchField.getText();
             uriBuilder = new URIBuilder(API_Report);
-            uriBuilder.addParameter("apikey", "781dc33df7ae27f765cf69c4f0f6c87cc159a5260fdf2c132a5eada8dc229fac");
+            uriBuilder.addParameter("apikey", API_Key);
             uriBuilder.addParameter("resource", hashID);
             uriBuilder.addParameter("allinfo", "false");
             URI uri = uriBuilder.build();
@@ -382,8 +386,6 @@ public class mainPageFrame extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, vInfo);
             }
 
-        } catch (URISyntaxException e) {
-            JOptionPane.showMessageDialog(null, "Enter SCAN ID OR FILE HASH !");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Enter SCAN ID OR FILE HASH !");
         }

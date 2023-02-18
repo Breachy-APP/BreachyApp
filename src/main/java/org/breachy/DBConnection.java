@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
-import io.github.cdimascio.dotenv.Dotenv;
     public class DBConnection {
         private final String url;
         private final int port;
@@ -13,9 +12,8 @@ import io.github.cdimascio.dotenv.Dotenv;
         private static org.breachy.DBConnection instance;
 
         // SECRET TODO
-        Dotenv dotenv = Dotenv.load();
-        String DBUsername = dotenv.get("DB_Username");
-        String DBPassword = dotenv.get("DB_Password");
+        private final String DBUsername = System.getenv("DB_Username");
+        private final String DBPassword = System.getenv("DB_Password");
 
         private DBConnection() throws SQLException {
 

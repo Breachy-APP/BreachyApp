@@ -11,6 +11,8 @@ public class SearchTool {
     String breachSystem;
     String breachSysVersion;
     String breachDescription;
+    String errorResult = "Error!";
+
     DBActions searching = new DBActions();
     public SearchTool(){
     }
@@ -50,7 +52,7 @@ public class SearchTool {
         catch (SQLException e){
             e.printStackTrace();
         }
-        return "";
+        return errorResult;
     }
     public  String searchBySystem(String breachSystem){
         System.out.println(breachSystem +"???");
@@ -78,7 +80,7 @@ public class SearchTool {
         catch (SQLException e){
             e.printStackTrace();
         }
-        return "";
+        return errorResult;
     }
     public String searchByVersion(String breachSysVersion){
         System.out.println(breachSysVersion);
@@ -106,7 +108,7 @@ public class SearchTool {
         catch (SQLException e){
             e.printStackTrace();
         }
-        return "";
+        return errorResult;
 
     }
     public String searchByDescription(String breachDescription){
@@ -135,7 +137,7 @@ public class SearchTool {
         catch (SQLException e){
             e.printStackTrace();
         }
-        return "";
+        return errorResult;
     }
 
     public String search(String req) {
@@ -167,6 +169,6 @@ public class SearchTool {
         catch (SQLException e){
             e.printStackTrace();
         }
-        return "";
+        return errorResult;
     }
 }

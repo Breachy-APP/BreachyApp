@@ -10,6 +10,7 @@ import java.security.Key;
 import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Base64;
 
 public class SignUpFrame extends JFrame implements ActionListener {
@@ -140,27 +141,25 @@ public class SignUpFrame extends JFrame implements ActionListener {
             conPasswordText = confirmPasswordField.getText();
 
             // Check if already exists then Insert to DB
-            DBActions newAccount = null;
+            DBActions newAccount = new DBActions();
             if (isComplete(userNameText, emailText, passwordText, conPasswordText)) {
-
-                encryptPassword(userNameText, passwordText,emailText);
-
-                JOptionPane.showMessageDialog(this, "Welcome to our amazing app");
-
-                this.toFront();
-                setVisible(false);
-                mainPageFrame mainFrame = new mainPageFrame();
-                mainFrame.openMainPage(mainFrame, true);
-                System.out.println("Retrieve info");
+                try {
+                    if (newAccount.alreadyExists(userNameText, emailText)) {
+                        JOptionPane.showMessageDialog(null, "The username or email is used, try to log in!");
+                    } else {
+                        encryptPassword(userNameText, passwordText,emailText);
+                        JOptionPane.showMessageDialog(this, "Welcome to our amazing app");
+                        this.toFront();
+                        setVisible(false);
+                        mainPageFrame mainFrame = new mainPageFrame();
+                        mainFrame.openMainPage(mainFrame, true);
+                        System.out.println("Retrieve info");
+                    }
+                } catch (SQLException ex) {
+                    System.out.println("er");
+                }
             }
 
-            JOptionPane.showMessageDialog(this, "Welcome to our amazing app");
-
-            this.toFront();
-            setVisible(false);
-            mainPageFrame mainFrame = new mainPageFrame();
-            mainFrame.openMainPage(mainFrame, true);
-            System.out.println("Open main page");
         }
 
         if (e.getSource() == returnButton) {
@@ -226,9 +225,11 @@ public class SignUpFrame extends JFrame implements ActionListener {
             pstmt.setString(1, username);
             pstmt.setString(2, encryptedPasswordBase64);
             pstmt.setString(3, emailText);
-            pstmt.setString(4,("Active"));
-            pstmt.setString(5,encryptionKeyBase64);
+            pstmt.setString(4, ("Active"));
+            pstmt.setString(5, encryptionKeyBase64);
             pstmt.executeUpdate();
+        } catch (SQLException ee) {
+            JOptionPane.showMessageDialog(null, "The username or email is used, try to log in!");
         } catch (Exception e) {
             e.printStackTrace();
         }

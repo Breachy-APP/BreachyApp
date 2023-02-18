@@ -1,11 +1,10 @@
-
-// The Reference to this class is https://www.tutorialsfield.com/login-form-in-java-swing-with-source-code/
-
 package org.breachy;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 public class LoginFrame extends JFrame implements ActionListener {
 
     Container container = getContentPane();
@@ -43,7 +42,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         showPassword.setForeground(Color.white);
         loginButton.setBounds(50, 300, 100, 30);
         resetButton.setBounds(200, 300, 100, 30);
-        returnButton.setBounds(120,400,100,30);
+        returnButton.setBounds(120, 400, 100, 30);
 
     }
 
@@ -73,53 +72,54 @@ public class LoginFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //Coding Part of LOGIN button
-        if (e.getSource() == loginButton) {
-            String userText;
-            String pwdText;
-            userText = userTextField.getText();
-            pwdText = passwordField.getText();
-            System.out.println(userText + " : " +  pwdText + " Logged in Successfully");
+            if (e.getSource() == loginButton) {
 
-            DBActions accessAccount = new DBActions(userText, pwdText);
+                String userText;
+                String pwdText;
+                userText = userTextField.getText();
+                pwdText = passwordField.getText();
+                System.out.println(userText + " : " + pwdText + " Logged in Successfully");
 
-            if(accessAccount.checkPassword(userText,pwdText)){
+                DBActions accessAccount = new DBActions(userText, pwdText);
 
-                this.toFront();
+                if (accessAccount.checkPassword(userText, pwdText)) {
+
+                    this.toFront();
+                    setVisible(false);
+                    String accData = accessAccount.retrieveAccountInfo(userText, pwdText);
+                    mainPageFrame mainFrame = new mainPageFrame();
+                    mainFrame.allAccountData = accessAccount.retrieveAccountInfo(userText, pwdText);
+                    mainFrame.openMainPage(mainFrame, true);
+                    System.out.println("Retrieve info");
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Username/password is incorrect, please try again");
+                    System.out.println("Wrong account username/password");
+                }
+
+            }
+            //Coding Part of RESET button
+            if (e.getSource() == resetButton) {
+                userTextField.setText("");
+                passwordField.setText("");
+            }
+            //Coding Part of showPassword JCheckBox
+            if (e.getSource() == showPassword) {
+                if (showPassword.isSelected()) {
+                    passwordField.setEchoChar((char) 0);
+                } else {
+                    passwordField.setEchoChar('*');
+                }
+            }
+            if (e.getSource() == returnButton) {
+
+                this.toBack();
                 setVisible(false);
-                String accData =  accessAccount.retrieveAccountInfo(userText, pwdText);
-                mainPageFrame mainFrame = new mainPageFrame();
-                mainFrame.allAccountData = accessAccount.retrieveAccountInfo(userText,pwdText);
-                mainFrame.openMainPage(mainFrame, true);
-                System.out.println("Retrieve info");
+                InitialPage initpage = new InitialPage();
+                initpage.openIntialPage(initpage, true);
 
             }
-            else {
-                JOptionPane.showMessageDialog(this,"Username/password is incorrect, please try again");
-                System.out.println("Wrong account username/password");
-            }
 
-        }
-        //Coding Part of RESET button
-        if (e.getSource() == resetButton) {
-            userTextField.setText("");
-            passwordField.setText("");
-        }
-        //Coding Part of showPassword JCheckBox
-        if (e.getSource() == showPassword) {
-            if (showPassword.isSelected()) {
-                passwordField.setEchoChar((char) 0);
-            } else {
-                passwordField.setEchoChar('*');
-            }
-        }
-        if (e.getSource() == returnButton){
 
-            this.toBack();
-            setVisible(false);
-            InitialPage initpage = new InitialPage();
-            initpage.openIntialPage(initpage,true);
-
-        }
-    }
-}
+    }}
 
