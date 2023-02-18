@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
+import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -17,6 +18,7 @@ public class BreachyAppTest {
     private final SignUpFrame signUpFrame = new SignUpFrame();
     private final mainPageFrame mainPage = new mainPageFrame();
     private final tipsPageFrame tipsPageFrame = new tipsPageFrame();
+    private final SoftwareListsFrame softwarePageFrame = new SoftwareListsFrame();
     private final DBActions dbActions = new DBActions();
     private final DBActions dbActions2 = new DBActions("Test","Test", "Test@.com");
     private final DBActions dbActions3 = new DBActions("Test","Test");
@@ -105,7 +107,7 @@ public class BreachyAppTest {
     }
 
     @Test
-    void DBActionsTest(){
+    void DBActionsTest() throws SQLException {
 
 
         dbActions.setUsername("Test");
@@ -124,8 +126,8 @@ public class BreachyAppTest {
         dbActions.retrieveAccountInfo("test","test");
         assertEquals("hhh@.comActive", dbActions.retrieveAccountInfo("h","h"));
 
-        assertEquals(true, dbActions.alreadyExists("h","h"));
-        assertEquals(false,dbActions.alreadyExists("Test","test"));
+        assertEquals(true, dbActions.alreadyExists("h","h@email.com"));
+        assertEquals(false,dbActions.alreadyExists("Test","Test@test.com"));
 
         assertEquals(null, dbActions.searchForBreach("ff"));
 
@@ -133,6 +135,10 @@ public class BreachyAppTest {
         dbActions.deleteAccount("Test");
 
 
+    }
+    @Test
+    void SoftwareListsFrameTest(){
+        SoftwareListsFrame softwarePageFrame = new SoftwareListsFrame();
     }
 
 
