@@ -4,49 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abbbd0c2-293b-4b33-b293-c3f4285a0a8f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/css/coverage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/css/idea.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/img/arrowDown.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/img/arrowUp.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/index_SORT_BY_BLOCK.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/index_SORT_BY_CLASS.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/index_SORT_BY_LINE.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/index_SORT_BY_LINE_DESC.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/index_SORT_BY_METHOD.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/index_SORT_BY_NAME_DESC.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/js/highlight.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/js/highlightjs-line-numbers.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/index_SORT_BY_BLOCK.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/index_SORT_BY_CLASS.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/index_SORT_BY_LINE.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/index_SORT_BY_LINE_DESC.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/index_SORT_BY_METHOD.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/index_SORT_BY_NAME_DESC.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-4.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-5.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-6.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-7.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-8.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-9.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-a.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-b.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-c.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-d.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-e.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IntelliJ IDEA coverage/ns-1/sources/source-f.html" afterDir="false" />
-    </list>
+    <list default="true" id="abbbd0c2-293b-4b33-b293-c3f4285a0a8f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,7 +137,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1674298144517</updated>
-      <workItem from="1676730251747" duration="10263000" />
+      <workItem from="1676730251747" duration="10567000" />
     </task>
     <servers />
   </component>
@@ -210,7 +168,7 @@
     <SUITE FILE_PATH="coverage/BreachyApp$BreachyAppTest_MainPageTest.ic" NAME="BreachyAppTest.MainPageTest Coverage Results" MODIFIED="1675945040322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>org.breachy.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/BreachyApp$BreachyAppTest.ic" NAME="BreachyAppTest Coverage Results" MODIFIED="1676738573799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/BreachyApp$BreachyAppTest.ic" NAME="BreachyAppTest Coverage Results" MODIFIED="1676740829784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>org.breachy.*</FILTER>
     </SUITE>
   </component>
