@@ -1,0 +1,167 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > VirusInfo</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.breachy</a>
+</div>
+
+<h1>Coverage Summary for Class: VirusInfo (org.breachy)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">VirusInfo</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.breachy;
+&nbsp;
+&nbsp;import com.fasterxml.jackson.annotation.JsonProperty;
+&nbsp;
+&nbsp;import java.util.Map;
+&nbsp;
+<b class="nc">&nbsp;public class VirusInfo {</b>
+&nbsp;    private String scans;
+&nbsp;    private String McAfee;
+&nbsp;    private String detected;
+&nbsp;    private String result;
+&nbsp;
+&nbsp;    public String getScans() {
+<b class="nc">&nbsp;        return scans;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setScans(String scans) {
+<b class="nc">&nbsp;        this.scans = scans;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getMcAfee() {
+<b class="nc">&nbsp;        return McAfee;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setMcAfee(String city) {
+<b class="nc">&nbsp;        this.McAfee = city;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getDetected() {
+<b class="nc">&nbsp;        return detected;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDetected(String detected) {
+<b class="nc">&nbsp;        this.detected = detected;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getResult() {
+<b class="nc">&nbsp;        return result;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setResult(String result) {
+<b class="nc">&nbsp;        this.result = result;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @SuppressWarnings(&quot;unchecked&quot;)
+&nbsp;    @JsonProperty(&quot;scans&quot;)
+&nbsp;    private void unpackNested(Map&lt;String, Object&gt; scans) {
+<b class="nc">&nbsp;        this.McAfee = (String) scans.get(&quot;McAfee&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @SuppressWarnings(&quot;unchecked&quot;)
+&nbsp;    @JsonProperty(&quot;McAfee&quot;)
+&nbsp;    private void unnpackNested(Map&lt;String, Object&gt; McAfee) {
+<b class="nc">&nbsp;        this.detected = (String) McAfee.get(&quot;detected&quot;);</b>
+<b class="nc">&nbsp;        this.result = (String) McAfee.get(&quot;result&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;Virus scan using McAfee:\n&quot; +</b>
+&nbsp;                &quot;Detected= &quot; + detected +
+<b class="nc">&nbsp;                &quot;\nVirus type= &quot; + result.replace(&quot;\&#39;&quot;, &quot;&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-02-18 19:44</div>
+</div>
+</body>
+</html>

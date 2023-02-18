@@ -1,0 +1,245 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > InitialPage</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.breachy</a>
+</div>
+
+<h1>Coverage Summary for Class: InitialPage (org.breachy)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">InitialPage</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (4/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    82.3%
+  </span>
+  <span class="absValue">
+    (65/79)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.breachy;
+&nbsp;import javax.swing.*;
+&nbsp;import java.awt.*;
+&nbsp;import java.awt.event.ActionEvent;
+&nbsp;import java.awt.event.ActionListener;
+&nbsp;
+&nbsp;import static org.breachy.mainPageFrame.breachyLogo;
+&nbsp;
+&nbsp;public class InitialPage extends JFrame implements ActionListener {
+&nbsp;
+<b class="fc">&nbsp;    Container initPageContainer = getContentPane();</b>
+<b class="fc">&nbsp;    JLabel welcomeLabel = new JLabel(&quot;Welcome to the application&quot;);</b>
+<b class="fc">&nbsp;    JButton signUPButton = new JButton(&quot;SIGN UP&quot;);</b>
+<b class="fc">&nbsp;    JButton logInButton = new JButton(&quot;LOG IN&quot;);</b>
+<b class="fc">&nbsp;    JCheckBox rememberMe = new JCheckBox(&quot;REMEMBER ME&quot;);</b>
+<b class="fc">&nbsp;    JToggleButton ChangeColor = new JToggleButton(&quot;Dark Mode&quot;);</b>
+<b class="fc">&nbsp;    public static Color color=new Color(93, 93, 112);</b>
+&nbsp;
+<b class="fc">&nbsp;    JButton Guest = new JButton(&quot;Continue without Login&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;    InitialPage(){</b>
+<b class="fc">&nbsp;        setLayoutManager();</b>
+<b class="fc">&nbsp;        setInitPageLocation();</b>
+<b class="fc">&nbsp;        addComponentsToContainer();</b>
+<b class="fc">&nbsp;        addActionEvent();</b>
+&nbsp;    }
+&nbsp;    public void openIntialPage(InitialPage initFrame, boolean c){
+&nbsp;
+<b class="fc">&nbsp;        initFrame.setTitle(&quot;Initial Form&quot;);</b>
+<b class="fc">&nbsp;        initFrame.setVisible(c);</b>
+<b class="fc">&nbsp;        initFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);</b>
+<b class="fc">&nbsp;        initFrame.setBounds(600, 150, 350, 500);</b>
+<b class="fc">&nbsp;        initFrame.setResizable(false);</b>
+<b class="fc">&nbsp;        initFrame.setIconImage(breachyLogo.getImage());</b>
+&nbsp;    }
+&nbsp;    public void openLogInForm(boolean c) {
+&nbsp;
+<b class="fc">&nbsp;        LoginFrame logInFrame = new LoginFrame();</b>
+<b class="fc">&nbsp;        logInFrame.setTitle(&quot;Login Form&quot;);</b>
+<b class="fc">&nbsp;        logInFrame.setVisible(c);</b>
+<b class="fc">&nbsp;        logInFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);</b>
+<b class="fc">&nbsp;        logInFrame.setBounds(600, 150, 350, 500);</b>
+<b class="fc">&nbsp;        logInFrame.setResizable(false);</b>
+<b class="fc">&nbsp;        logInFrame.setIconImage(breachyLogo.getImage());</b>
+&nbsp;
+&nbsp;    }
+&nbsp;    public static void openSignInForm(boolean c) {
+&nbsp;
+<b class="fc">&nbsp;        SignUpFrame signUpFrame = new SignUpFrame();</b>
+<b class="fc">&nbsp;        signUpFrame.setTitle(&quot;Sign Up Form&quot;);</b>
+<b class="fc">&nbsp;        signUpFrame.setVisible(c);</b>
+<b class="fc">&nbsp;        signUpFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);</b>
+<b class="fc">&nbsp;        signUpFrame.setBounds(600, 150, 350, 500);</b>
+<b class="fc">&nbsp;        signUpFrame.setResizable(false);</b>
+<b class="fc">&nbsp;        signUpFrame.setIconImage(breachyLogo.getImage());</b>
+&nbsp;
+&nbsp;    }
+&nbsp;    public void setLayoutManager(){
+<b class="fc">&nbsp;        initPageContainer.setLayout(null);</b>
+&nbsp;    }
+&nbsp;    public void setInitPageLocation(){
+<b class="fc">&nbsp;        welcomeLabel.setBounds(70,30,250,45);</b>
+<b class="fc">&nbsp;        welcomeLabel.setFont(new Font(&quot;Calibre&quot;, Font.BOLD, 16));</b>
+<b class="fc">&nbsp;        welcomeLabel.setForeground(Color.white);</b>
+<b class="fc">&nbsp;        signUPButton.setBounds(120,100,100,30);</b>
+<b class="fc">&nbsp;        logInButton.setBounds(120,150,100,30);</b>
+<b class="fc">&nbsp;        rememberMe.setBounds(110,190,150,30);</b>
+<b class="fc">&nbsp;        rememberMe.setFont(new Font(&quot;Calibre&quot;, Font.ITALIC, 12));</b>
+<b class="fc">&nbsp;        rememberMe.setForeground(Color.white);</b>
+<b class="fc">&nbsp;        ChangeColor.setBounds(107,300,130,30);</b>
+<b class="fc">&nbsp;        Guest.setBounds(82,230,180,30);</b>
+&nbsp;    }
+&nbsp;    public void addComponentsToContainer(){
+&nbsp;
+<b class="fc">&nbsp;        initPageContainer.add(welcomeLabel);</b>
+<b class="fc">&nbsp;        initPageContainer.add(signUPButton);</b>
+<b class="fc">&nbsp;        initPageContainer.add(logInButton);</b>
+<b class="fc">&nbsp;        initPageContainer.add(rememberMe);</b>
+<b class="fc">&nbsp;        rememberMe.setBackground(color);</b>
+<b class="fc">&nbsp;        initPageContainer.setBackground(color);</b>
+<b class="fc">&nbsp;        initPageContainer.add(ChangeColor);</b>
+<b class="fc">&nbsp;        initPageContainer.add(Guest);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;    public void addActionEvent(){
+&nbsp;
+<b class="fc">&nbsp;        signUPButton.addActionListener(this);</b>
+<b class="fc">&nbsp;        logInButton.addActionListener(this);</b>
+<b class="fc">&nbsp;        rememberMe.addActionListener(this);</b>
+<b class="fc">&nbsp;        ChangeColor.addActionListener(this);</b>
+<b class="fc">&nbsp;        Guest.addActionListener(this);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void actionPerformed(ActionEvent e) {
+&nbsp;
+<b class="pc">&nbsp;        if(e.getSource() == signUPButton){</b>
+<b class="nc">&nbsp;            this.toFront();</b>
+<b class="nc">&nbsp;            setVisible(false);</b>
+<b class="nc">&nbsp;            openSignInForm(true);</b>
+&nbsp;
+&nbsp;        }
+<b class="pc">&nbsp;        if(e.getSource() == logInButton){</b>
+<b class="nc">&nbsp;            this.toFront();</b>
+<b class="nc">&nbsp;            setVisible(false);</b>
+<b class="nc">&nbsp;            openLogInForm(true);</b>
+&nbsp;        }
+&nbsp;
+<b class="pc">&nbsp;        if(ChangeColor.isSelected()){</b>
+<b class="nc">&nbsp;            color = new Color(40,40,40);</b>
+<b class="nc">&nbsp;            initPageContainer.setBackground(color);</b>
+<b class="nc">&nbsp;            rememberMe.setBackground(color);</b>
+<b class="nc">&nbsp;            ChangeColor.setText(&quot;Light Mode&quot;);</b>
+&nbsp;        }else{
+<b class="fc">&nbsp;            color=new Color(93, 93, 112);</b>
+<b class="fc">&nbsp;            initPageContainer.setBackground(color);</b>
+<b class="fc">&nbsp;            rememberMe.setBackground(color);</b>
+<b class="fc">&nbsp;            ChangeColor.setText(&quot;Dark Mode&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="pc">&nbsp;        if(e.getSource() == Guest){</b>
+<b class="nc">&nbsp;            this.toFront();</b>
+<b class="nc">&nbsp;            setVisible(false);</b>
+<b class="nc">&nbsp;            mainPageFrame mainFrame = new mainPageFrame();</b>
+<b class="nc">&nbsp;            mainFrame.openMainPage(mainFrame,true);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-02-18 19:44</div>
+</div>
+</body>
+</html>

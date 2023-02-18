@@ -1,0 +1,223 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > tipsPageFrame</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.breachy</a>
+</div>
+
+<h1>Coverage Summary for Class: tipsPageFrame (org.breachy)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">tipsPageFrame</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    93.7%
+  </span>
+  <span class="absValue">
+    (59/63)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.breachy;
+&nbsp;
+&nbsp;import javax.swing.*;
+&nbsp;import java.awt.*;
+&nbsp;import java.awt.event.ActionEvent;
+&nbsp;import java.awt.event.ActionListener;
+&nbsp;
+&nbsp;import static org.breachy.mainPageFrame.breachyLogo;
+&nbsp;
+&nbsp;
+&nbsp;public class tipsPageFrame extends JFrame implements ActionListener {
+&nbsp;
+<b class="fc">&nbsp;        Container tipsPageContainer = getContentPane();</b>
+&nbsp;
+<b class="fc">&nbsp;        JLabel tipsLabel = new JLabel(&quot;Tips:&quot;);</b>
+<b class="fc">&nbsp;        JLabel firewallTip = new JLabel(&quot;1. Use a firewall.&quot;);</b>
+<b class="fc">&nbsp;        JLabel antiVirusTip = new JLabel(&quot;2. Install antivirus software.&quot;);</b>
+<b class="fc">&nbsp;        JLabel complexPassTip = new JLabel(&quot;3. Use complex passwords.&quot;);</b>
+<b class="fc">&nbsp;        JLabel upToDateTip = new JLabel(&quot;4. Keep your OS, apps and browser up-to-date.&quot;);</b>
+<b class="fc">&nbsp;        JLabel ignoreSpamTip = new JLabel(&quot;5. Ignore spam.&quot;);</b>
+<b class="fc">&nbsp;        JLabel backUpTip = new JLabel(&quot;6. Back up your computer.&quot;);</b>
+<b class="fc">&nbsp;        JLabel secureNetworkTip = new JLabel(&quot;7. Secure your network.&quot;);</b>
+<b class="fc">&nbsp;        JLabel awayPirateTip = new JLabel(&quot;8. Stay away from pirated material.&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        JLabel unsecuredWifiTip = new JLabel(&quot;9. Don’t use unsecured public Wi-Fi.&quot;);</b>
+<b class="fc">&nbsp;        JButton returnButton = new JButton(&quot;Return&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        tipsPageFrame() {</b>
+<b class="fc">&nbsp;            setLayoutManager();</b>
+<b class="fc">&nbsp;            setLocation();</b>
+<b class="fc">&nbsp;            addComponentsToContainer();</b>
+<b class="fc">&nbsp;            addActionEvent();</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public void openTipsPage(tipsPageFrame tipsFrame, boolean flag) {
+<b class="fc">&nbsp;            tipsFrame.setTitle(&quot;Tips Page&quot;);</b>
+<b class="fc">&nbsp;            tipsFrame.setVisible(flag);</b>
+<b class="fc">&nbsp;            tipsFrame.setBounds(600, 150, 350, 500);</b>
+<b class="fc">&nbsp;            tipsFrame.setResizable(false);</b>
+<b class="fc">&nbsp;            tipsFrame.setIconImage(breachyLogo.getImage());</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;        @Override
+&nbsp;        public void actionPerformed(ActionEvent e) {
+<b class="pc">&nbsp;            if (e.getSource() == returnButton) {</b>
+<b class="nc">&nbsp;                this.toBack();</b>
+<b class="nc">&nbsp;                setVisible(false);</b>
+<b class="nc">&nbsp;                mainPageFrame mainPage = new mainPageFrame();</b>
+<b class="nc">&nbsp;                mainPage.openMainPage(mainPage, true);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        public void addActionEvent() {
+&nbsp;            //Button that return to main page\
+<b class="fc">&nbsp;            returnButton.addActionListener(this);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public void addComponentsToContainer() {
+<b class="fc">&nbsp;            tipsLabel.setForeground(Color.white);</b>
+<b class="fc">&nbsp;            firewallTip.setForeground(Color.white);</b>
+<b class="fc">&nbsp;            antiVirusTip.setForeground(Color.white);</b>
+<b class="fc">&nbsp;            complexPassTip.setForeground(Color.white);</b>
+<b class="fc">&nbsp;            upToDateTip.setForeground(Color.white);</b>
+<b class="fc">&nbsp;            ignoreSpamTip.setForeground(Color.white);</b>
+<b class="fc">&nbsp;            backUpTip.setForeground(Color.white);</b>
+<b class="fc">&nbsp;            secureNetworkTip.setForeground(Color.white);</b>
+<b class="fc">&nbsp;            awayPirateTip.setForeground(Color.white);</b>
+<b class="fc">&nbsp;            unsecuredWifiTip.setForeground(Color.white);</b>
+&nbsp;
+<b class="fc">&nbsp;            tipsPageContainer.add(tipsLabel);</b>
+<b class="fc">&nbsp;            tipsPageContainer.add(firewallTip);</b>
+<b class="fc">&nbsp;            tipsPageContainer.add(antiVirusTip);</b>
+<b class="fc">&nbsp;            tipsPageContainer.add(complexPassTip);</b>
+<b class="fc">&nbsp;            tipsPageContainer.add(upToDateTip);</b>
+<b class="fc">&nbsp;            tipsPageContainer.add(ignoreSpamTip);</b>
+<b class="fc">&nbsp;            tipsPageContainer.add(backUpTip);</b>
+<b class="fc">&nbsp;            tipsPageContainer.add(secureNetworkTip);</b>
+<b class="fc">&nbsp;            tipsPageContainer.add(awayPirateTip);</b>
+<b class="fc">&nbsp;            tipsPageContainer.add(unsecuredWifiTip);</b>
+<b class="fc">&nbsp;            tipsPageContainer.add(returnButton);</b>
+<b class="fc">&nbsp;            tipsPageContainer.setBackground(InitialPage.color);</b>
+&nbsp;
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;        public void setLocation() {
+&nbsp;
+<b class="fc">&nbsp;            tipsLabel.setBounds(12, 15, 300, 30);</b>
+<b class="fc">&nbsp;            tipsLabel.setFont(new Font(&quot;Calibre&quot;, Font.BOLD, 20));</b>
+<b class="fc">&nbsp;            firewallTip.setSize(300, 150);</b>
+<b class="fc">&nbsp;            antiVirusTip.setSize(300, 200);</b>
+<b class="fc">&nbsp;            complexPassTip.setSize(300, 250);</b>
+<b class="fc">&nbsp;            upToDateTip.setSize(300, 300);</b>
+<b class="fc">&nbsp;            ignoreSpamTip.setSize(300, 350);</b>
+<b class="fc">&nbsp;            backUpTip.setSize(300, 400);</b>
+<b class="fc">&nbsp;            secureNetworkTip.setSize(300, 450);</b>
+<b class="fc">&nbsp;            awayPirateTip.setSize(300, 500);</b>
+<b class="fc">&nbsp;            unsecuredWifiTip.setSize(300, 550);</b>
+<b class="fc">&nbsp;            returnButton.setBounds(120, 400, 100, 30);</b>
+&nbsp;
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;        public void setLayoutManager() {
+<b class="fc">&nbsp;            tipsPageContainer.setLayout(null);</b>
+&nbsp;        }
+&nbsp;    }
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-02-18 19:44</div>
+</div>
+</body>
+</html>
